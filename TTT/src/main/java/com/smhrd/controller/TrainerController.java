@@ -9,6 +9,7 @@ import com.smhrd.repository.TrainerRepository;
 
 @Controller
 public class TrainerController {
+	
 	@Autowired
 	private TrainerRepository repo;
 	
@@ -17,8 +18,12 @@ public class TrainerController {
 //		TODO#1 로그인 체크 기능
 		entity = repo.findByIdAndPw(entity.getId(), entity.getPw());
 		
-		
 //		TODO#1-1 로그인 성공 시 메인화면으로 이동
+		if(entity != null) {
+			System.out.println("로그인 성공!");
+			System.out.println("로그인 info : " + entity.toString());
+		}
+		
 //		TODO#1-2 로그인 실패 시 홈화면으로 이동
 //		메인화면 홈화면 url 같게할 수는 없나?
 		return "";

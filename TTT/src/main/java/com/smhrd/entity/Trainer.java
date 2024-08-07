@@ -19,11 +19,11 @@ public class Trainer {
 	// 아이디
 	@Id
 	@Column(length = 30)
-	private String Id;
+	private String id;
 
 	// 비밀번호
 	@Column(length = 32, nullable = false)
-	private String Pw;
+	private String pw;
 
 	// 이름
 	@Column(length = 50, nullable = false)
