@@ -1,6 +1,8 @@
 package com.smhrd.entity;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,7 +38,9 @@ public class Trainer {
 	private String name;
 
 	// 생년월일
-	private Timestamp birthdate;
+	@Column(name = "tr_birthdate")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate  birthdate;
 
 	// 전화번호
 	@Column(name = "tr_phone", length = 20, nullable = false)
@@ -46,17 +52,17 @@ public class Trainer {
 
 	// 가입일자
 	@Column(name = "joined_at")
-	private Timestamp joinedAt;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private LocalDateTime joinedAt;
 
 	// 유형
 	@Column(name = "tr_type", length = 10, nullable = false)
 	private String type;
 
 	// 센터 식별자
-	@JoinColumn(name = "idx")
-//	@JoinColumn(name = "fc_idx", referencedColumnName = "id")
-	@ManyToOne(targetEntity = FitnessCenter.class)
-	private Long fcIdx;
+//	@JoinColumn(name = "idx")
+//	@ManyToOne(targetEntity = FitnessCenter.class)
+//	private Long fcIdx;
 
 	// 프로필 사진
 	@Column(name = "profile_img", length = 1200, nullable = true)
