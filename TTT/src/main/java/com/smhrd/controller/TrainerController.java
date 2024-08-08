@@ -16,17 +16,20 @@ public class TrainerController {
 	@RequestMapping("/loginCheck")
 	public String loginCheck(Trainer entity) {
 //		TODO#1 로그인 체크 기능
-		entity = repo.findByIdAndPw(entity.getId(), entity.getPw());
+//		entity = repo.findByIdAndPw(entity.getId(), entity.getPw());
+
+		System.out.println(entity);
+		entity = repo.findByIdAndPw(entity.getId(), entity.getPw());		
 		
 //		TODO#1-1 로그인 성공 시 메인화면으로 이동
 		if(entity != null) {
 			System.out.println("로그인 성공!");
 			System.out.println("로그인 info : " + entity.toString());
-			return "redirect:/main";
+			return "redirect:/goMain";
 		}
 		
 //		TODO#1-2 로그인 실패 시 홈화면으로 이동
 //		메인화면 홈화면 url 같게할 수는 없나?
-		return "redirect:/home";
+		return "redirect:/";
 	}
 }
