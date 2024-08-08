@@ -7,7 +7,7 @@
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T.T.T Trainer Time Table</title>
-    <link rel="stylesheet" href="resources/Home.css">
+    <link rel="stylesheet" href="resources/home.css">
 
     
   </head>

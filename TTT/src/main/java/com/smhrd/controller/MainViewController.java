@@ -28,4 +28,9 @@ public class MainViewController {
 		return "main";
 	}
 	
+	@RequestMapping("/index")
+	public String goIndex() {
+		return "index";
+	}
+	
 }
