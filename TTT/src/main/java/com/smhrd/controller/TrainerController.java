@@ -1,11 +1,9 @@
 package com.smhrd.controller;
 
 import java.time.LocalDateTime;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
 import com.smhrd.entity.Trainer;
 import com.smhrd.repository.TrainerRepository;
 
@@ -15,7 +13,7 @@ public class TrainerController {
 	@Autowired
 	private TrainerRepository repo;
 	
-	@RequestMapping("/loginCheck")
+	@PostMapping("/loginCheck")
 	public String loginCheck(Trainer entity) {
 
 		entity = repo.findByIdAndPw(entity.getId(), entity.getPw());		
@@ -30,7 +28,7 @@ public class TrainerController {
 	}
 	
 	
-	@RequestMapping("/registTrainer")
+	@PostMapping("/registTrainer")
 	public String registTrainer(Trainer entity) {
 		
 		entity.setToken("hello");
@@ -46,13 +44,17 @@ public class TrainerController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping("/deleteTrainer")
+	@PostMapping("/deleteTrainer")
 	public String deleteTrainer(Trainer entity) {
 		entity.setId("test3");
 		repo.deleteById(entity.getId());
-		System.out.println(entity);
 		System.out.println("일단 탈퇴 한번 돌긴함요");
 		
 		return "redirect:/";
 	}
+
+	// @PostMapping("/updateTrainer")
+	// public String updateTrainer(Trainer entity) {
+
+	// }
 }
