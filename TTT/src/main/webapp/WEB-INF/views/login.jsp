@@ -11,7 +11,7 @@
 <body>
   <div class="sidebar">
     <img src="resources/로고1.png" alt="T.T.T 로고" class="logo">
-    <button class="home-button" onclick="location.href='goHome'">홈으로</button>
+    <button class="home-button" onclick="location.href='/'">홈으로</button>
   </div>
   <div class="login-wrap">
   
