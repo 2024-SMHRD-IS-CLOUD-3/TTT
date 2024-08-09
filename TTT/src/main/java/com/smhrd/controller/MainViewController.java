@@ -26,4 +26,9 @@ public class MainViewController {
 		return "index";
 	}
 	
+	@GetMapping("/goMyPage")
+	public String goMyPage() {
+		return "myPage";
+	}
+	
 }

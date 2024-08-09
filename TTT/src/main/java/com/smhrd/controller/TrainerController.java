@@ -1,9 +1,10 @@
 package com.smhrd.controller;
 
 import java.time.LocalDateTime;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.smhrd.entity.Trainer;
 import com.smhrd.repository.TrainerRepository;
@@ -17,16 +18,17 @@ public class TrainerController {
 
 	
 	@PostMapping("/loginCheck")
-	public String loginCheck(Trainer entity) {
+	public String loginCheck(Trainer entity, HttpSession session) {
 
-		this.loginEntity = repo.findByIdAndPw(entity.getId(), entity.getPw());		
+		System.err.println(entity);
+		entity = repo.findByIdAndPw(entity.getId(), entity.getPw());		
 		
-		if(loginEntity != null) {
+		session.setAttribute("loginTrainer", entity);
+
+		if(entity != null) {
 			System.out.println("로그인 성공!");
-			System.out.println("로그인 info : " + loginEntity.toString());
-			return "redirect:/";
+			System.out.println("로그인 info : " + entity.toString());
 		}
-		System.err.println("로그인 실패");
 		return "redirect:/";
 	}
 	
@@ -48,20 +50,31 @@ public class TrainerController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/deleteTrainer")
-	public String deleteTrainer() {
-		System.err.println("탈퇴 전 : " + loginEntity);
-		repo.deleteById(loginEntity.getId());
-		System.err.println("탈퇴 후 : " + repo.findById(loginEntity.getId()));
+	@PostMapping("/deleteTrainer")
+	public String deleteTrainer(HttpSession session) {
+		Trainer entity = (Trainer)session.getAttribute("loginTrainer");
 		
+		repo.deleteById(entity.getId());
 		return "redirect:/";
 	}
 
-	@PostMapping("/goMyPage")
-	public String goMyPage() {
-		if(loginEntity != null)
-			return "myPage";
-		System.out.println("로그인 하고 오셈요");
+	@PostMapping("/updateTrainer")
+	@Transactional
+	public String updateTrainer(Trainer entity, HttpSession session) {
+		
+		Trainer existingTrainer = (Trainer)session.getAttribute("loginTrainer");
+		
+		entity.setJoinedAt(existingTrainer.getJoinedAt());
+		entity.setType(existingTrainer.getType());
+		entity.setProfileImg(existingTrainer.getProfileImg());
+		entity.setToken(existingTrainer.getToken());
+
+		existingTrainer = entity;
+
+		if(existingTrainer != null) {
+			repo.save(existingTrainer);
+			session.setAttribute("loginTrainer", existingTrainer);
+		}
 		return "redirect:/";
 	}
 }
