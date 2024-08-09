@@ -35,8 +35,12 @@
               <input type="text" name="urWeight" class="input">
             </div>
             <div class="group">
-              <label class="label">성별</label>
-              <input type="text" name="urGender" class="input">
+              <label class="label">
+              	<input type="radio" name="urGender" class="input" value="남">남
+              </label>
+              <label class="label">
+              	<input type="radio" name="urGender" class="input" value="여">여
+              </label>
             </div>
             <div>
               <label for="pass" class="label">프로필사진</label>

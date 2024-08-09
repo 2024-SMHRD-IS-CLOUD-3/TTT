@@ -61,7 +61,7 @@ public class User {
     // 가입일자 
     @Basic(optional=false)
     @Column(columnDefinition = "TIMESTAMP", insertable = false, updatable = false)
-    @CreationTimestamp
+//    @CreationTimestamp
     private String joinedAt;
 
     // 프로필 사진 
