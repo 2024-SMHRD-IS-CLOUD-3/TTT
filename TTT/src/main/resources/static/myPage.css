@@ -60,6 +60,20 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.update-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #71a3e4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.update-button:hover {
     background-color: #619be7;
+}
+
+button {
+	background-color: #619be7;
 }
