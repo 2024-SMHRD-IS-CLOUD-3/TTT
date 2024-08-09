@@ -18,7 +18,7 @@ public class MainViewController {
 
 	@GetMapping("/goMain")
 	public String goMain() {
-		return "main";
+		return "calendar";
 	}
 	
 	@GetMapping("/index")
@@ -29,6 +29,11 @@ public class MainViewController {
 	@GetMapping("/goMyPage")
 	public String goMyPage() {
 		return "myPage";
+	}
+	
+	@GetMapping("/goManagePage")
+	public String goManagePage() {
+		return "membershipManagement";
 	}
 	
 }
