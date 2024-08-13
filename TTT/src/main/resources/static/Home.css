@@ -35,7 +35,7 @@ body, html {
 
 .main-content {
     flex: 1;
-    background-image: url('배경1.png'); 
+    background-image: url('/resources/배경1.png'); 
     background-size: cover;
     background-position: center;
     position: relative;

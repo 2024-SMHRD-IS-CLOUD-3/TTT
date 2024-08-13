@@ -18,12 +18,7 @@ public class MainViewController {
 
 	@GetMapping("/goMain")
 	public String goMain() {
-		return "calendar";
-	}
-	
-	@GetMapping("/index")
-	public String goIndex() {
-		return "index";
+		return "scheduleManagement";
 	}
 	
 	@GetMapping("/goMyPage")

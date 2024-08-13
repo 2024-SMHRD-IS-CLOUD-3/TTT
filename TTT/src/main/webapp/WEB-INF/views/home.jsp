@@ -8,12 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T.T.T Trainer Time Table</title>
     <link rel="stylesheet" href="resources/Home.css">
-
-    
   </head>
   <body>
-
-
     <div class="container">
         <aside class="sidebar">
             <div class="logo">
