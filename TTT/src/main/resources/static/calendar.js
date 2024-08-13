@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById('calendar');
 
@@ -212,3 +213,4 @@ document.addEventListener('DOMContentLoaded', function () {
         
     }
 });
+
