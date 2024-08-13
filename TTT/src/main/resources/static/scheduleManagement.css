@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding-top: 80px; /* 헤더바 높이만큼의 패딩 추가 */
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.header {
+    background-color: #90caf9;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: fixed; /* 헤더바를 고정 */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* 다른 요소들보다 위에 오도록 설정 */
+    height: 80px; /* 헤더바의 높이 */
+}
+
+.header .logo {
+    height: 60px;
+}
+
+.header nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 16px;
+}
+
+.header nav a:hover, .header nav a:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.block1 {
+    padding: 50px;
+    text-align: center;
+    background-color: #f0f0f0;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    background-color: #90caf9;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    position: fixed; /* 풋터바를 고정 */
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* 풋터바의 높이 */
+}
