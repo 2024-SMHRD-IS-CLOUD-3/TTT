@@ -24,32 +24,35 @@
     <div class="block1">
         <div id="calendar"></div>
 
-        <div id="eventModal">
-            <div id="eventModalContent">
-                <h2 id="modalTitle"></h2>
-                <label for="eventTitle">회원이름</label>
-                <!-- TODO 회원이름은 디비에서 불러와야함 -->
-                <input type="text" id="eventTitle" />
-    
-                <label for="eventDescription">세부사항</label>
-                <!-- TODO 세부사항도 디비에서 불러와야함. + 수정도 할 수 있어야 함. -->
-                <input type="text" id="eventDescription" />
-<!--     
-                <label for="eventStartDate">Start Date:</label>
-                <input type="date" id="eventStartDate" />
-                <label for="eventStartTime">Start Time:</label>
-                <input type="time" id="eventStartTime" />
-    
-                <label for="eventEndDate">End Date:</label>
-                <input type="date" id="eventEndDate" />
-                <label for="eventEndTime">End Time:</label>
-                <input type="time" id="eventEndTime" /> -->
-    
-                <button id="saveEvent">Save</button>
-                <button id="deleteEvent">Delete</button>
-                <button id="closeModal">Cancel</button>
-            </div>
+       <!-- 모달 HTML 구조 -->
+		<div id="eventModal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Event Title</h2>
+
+            <label for="eventTitle">Event Title</label>
+            <input type="text" id="eventTitle" placeholder="Enter event title">
+
+            <label for="eventDescription">Event Description</label>
+            <input type="text" id="eventDescription" placeholder="Enter event description">
+
+            <label for="trainerId">Trainer ID</label>
+            <input type="text" id="trainerId" placeholder="Enter trainer ID">
+
+            <label for="userId">User ID</label>
+            <input type="text" id="userId" placeholder="Enter User ID">
+
+            <label for="eventColor">Event Color</label>
+            <input type="color" id="eventColor" value="#ff0000">
+
+            <label for="eventStatus">Event Status</label>
+            <input type="text" id="eventStatus" placeholder="Enter event status">
+
+            <button id="saveEvent" class="modal-button">Save Event</button>
+            <button id="deleteEvent" class="modal-delete-button">Delete Event</button>
+            <button id="closeModal" class="modal-close-button">Close</button>
         </div>
+    </div>
+
         <!-- FullCalendar JS -->
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 
