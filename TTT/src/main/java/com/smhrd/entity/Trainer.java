@@ -1,18 +1,12 @@
 package com.smhrd.entity;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import org.springframework.format.annotation.DateTimeFormat;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -58,11 +52,6 @@ public class Trainer {
 	// 유형
 	@Column(name = "tr_type", length = 10, nullable = false)
 	private String type;
-
-	// 센터 식별자
-//	@JoinColumn(name = "idx")
-//	@ManyToOne(targetEntity = FitnessCenter.class)
-//	private Long fcIdx;
 
 	// 프로필 사진
 	@Column(name = "profile_img", length = 1200, nullable = true)
