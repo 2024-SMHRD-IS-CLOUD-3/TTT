@@ -1,14 +1,18 @@
 package com.smhrd.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.entity.User;
 import com.smhrd.repository.UserRepository;
@@ -63,7 +67,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/goDetailUser")
-	public String goDetailUser(@RequestParam("urId") Long urId, Model model) {
+	public String goDetailUser(@RequestParam("urId") String urId, Model model) {
 		User entity = repo.findById(urId).get();
 		model.addAttribute("user",entity);
 		
@@ -71,7 +75,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/goModifyUser")
-	public String goModifyUser(@RequestParam("urId") Long urId, User entity, Model model) {
+	public String goModifyUser(@RequestParam("urId") String urId, User entity, Model model) {
 		User existEntity = repo.findById(urId).get();
 		System.out.println(existEntity);
 		existEntity.setUrGender(entity.getUrGender());
@@ -88,12 +92,13 @@ public class UserController {
 	}
 	
 	@RequestMapping("/goDeleteUser")
-	public String goDeleteUser(@RequestParam("urId") Long urId) {
+	public String goDeleteUser(@RequestParam("urId") String urId) {
 	repo.deleteById(urId);
 		
 		
 		return "redirect:/userList";
 	}
+
 	
 
 }
