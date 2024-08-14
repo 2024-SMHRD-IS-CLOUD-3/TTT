@@ -47,21 +47,29 @@ body {
 }
 
 .block1 {
-    padding: 50px;
+    padding: 45px; /* 패딩 제거 또는 줄이기 */
     text-align: center;
     background-color: #f0f0f0;
-    margin: 20px;
-    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .footer {
     background-color: #90caf9;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     color: white;
     position: fixed; /* 풋터바를 고정 */
     bottom: 0;
     width: 100%;
     height: 50px; /* 풋터바의 높이 */
+}
+
+#calendar {
+    height: calc(100vh - 170px); /* 화면 높이에서 적절한 값을 빼서 조정, 100px은 헤더, 푸터 등을 고려한 값 */
+    max-height: 100%; /* 최대 높이를 부모 요소의 크기로 제한 */
+    overflow-y: auto;
+}
+
+.fc-scroller {
+    background-color: #f0f0f0; /* 스크롤된 부분의 배경색 적용 */
 }

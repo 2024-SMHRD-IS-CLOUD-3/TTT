@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #90caf9;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 80px;
+}
+
+.header .logo {
+    height: 60px;
+}
+
+.header nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 16px;
+}
+
+.header nav a:hover, .header nav a:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.sidebar {
+    width: 300px; /* 사이드바 폭 */
+    background-color: #e3f2fd;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed; /* 사이드바를 고정 */
+    top: 80px; /* 헤더 아래에 위치 */
+    left: 0;
+    height: calc(100% - 80px); /* 헤더를 제외한 전체 높이 */
+    overflow-y: auto; /* 내용이 많아지면 스크롤 가능 */
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #90caf9;
+    margin-bottom: 20px;
+}
+
+.profile-name p {
+    font-size: 20px;
+    font-weight: bold;
+}
+.main-content {
+    margin-left: 320px; /* 사이드바 너비 + 여백 */
+    margin-top: 100px; /* 헤더바 높이 + 여백 */
+    margin-bottom: 100px;
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #f5f5f5;
+    min-height: calc(100% - 160px); /* 헤더와 풋터를 제외한 높이 */
+}
+
+.block1 {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.footer {
+    padding: 20px;
+    background-color: #90caf9;
+    color: white;
+    text-align: center;
+    margin-top: auto;
+}
+
+#calendar {
+    height: calc(100vh - 250px); /* 화면 높이에서 적절한 값을 빼서 조정, 100px은 헤더, 푸터 등을 고려한 값 */
+    max-height: 100%; /* 최대 높이를 부모 요소의 크기로 제한 */
+    overflow-y: auto;
+}
+
+.fc-scroller {
+    background-color: #f0f0f0; /* 스크롤된 부분의 배경색 적용 */
+}

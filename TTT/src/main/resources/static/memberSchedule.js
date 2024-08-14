@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById('calendar');
 
@@ -23,20 +22,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 const color = document.getElementById('eventColor').value;
                 const status = document.getElementById('eventStatus').value;
 
-                if (trainerId && userId) {
+                if (title && trainerId && userId) {
                     const newEvent = {
-					    id: Date.now(),
-					    description: description,
-					    startDate: info.startStr.split('T')[0],
-					    startTime: info.startStr.split('T')[1] ? info.startStr.split('T')[1] + '+09:00' : '00:00:00+09:00',
-					    endDate: info.endStr ? info.endStr.split('T')[0] : info.startStr.split('T')[0],
-					    endTime: info.endStr ? (info.endStr.split('T')[1]||'00:00:00') + '+09:00' : '23:59:59+09:00',
-					    trainerId: trainerId,
-					    userId: userId,
-					    color: color,
-					    status: status
-					};
-
+                        id: Date.now(),
+                        description: description,
+                        startDate: info.startStr.split('T')[0],
+                        startTime: info.startStr.split('T')[1] || '00:00:00',
+                        endDate: info.endStr ? info.endStr.split('T')[0] : info.startStr.split('T')[0],
+                        endTime: info.endStr ? info.endStr.split('T')[1] || '23:59:59' : '23:59:59',
+                        trainerId: trainerId,
+                        userId: userId,
+                        color: color,
+                        status: status
+                    };
                     calendar.addEvent({
                         title: title,
                         start: newEvent.startDate + 'T' + newEvent.startTime,
@@ -95,41 +93,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		    document.getElementById('eventStatus').value = info.event.extendedProps.status || '';
         },
         eventDrop: function (info) {
-        	console.log("eventDrop 부분");
-        	
-        	updatedEventData = {
-			            id: info.event.id,
-			            description: info.event.extendedProps.description,
-			            startDate: info.event.startStr.split('T')[0],
-			            startTime: info.event.startStr.split('T')[1] || '00:00:00',
-			            endDate: info.event.endStr ? info.event.endStr.split('T')[0] : info.event.startStr.split('T')[0],
-			            endTime: info.event.endStr ? info.event.endStr.split('T')[1] || '23:59:59' : '23:59:59',
-			            trainerId: info.event.extendedProps.trainerId , // trainer 객체로 래핑
-	       				userId: info.event.extendedProps.userId,            // user 객체로 래핑
-			            color: info.event.extendedProps.color,
-			            status: info.event.extendedProps.status
-			};
-        	
-    		saveEventToServer(updatedEventData, true);    	
+            saveEventToServer(info.event.extendedProps, true);
         },
         eventResize: function (info) {
-        	console.log("eventResize 부분 : ", info.event);
-        	console.log(info.event.extendedProps.trainerId);
-        	updatedEventData = {
-			            id: info.event.id,
-			            description: info.event.extendedProps.description,
-			            startDate: info.event.startStr.split('T')[0],
-			            startTime: info.event.startStr.split('T')[1] || '00:00:00',
-			            endDate: info.event.endStr ? info.event.endStr.split('T')[0] : info.event.startStr.split('T')[0],
-			            endTime: info.event.endStr ? info.event.endStr.split('T')[1] || '23:59:59' : '23:59:59',
-			            trainerId: info.event.extendedProps.trainerId , // trainer 객체로 래핑
-	       				userId: info.event.extendedProps.userId,            // user 객체로 래핑
-			            color: info.event.extendedProps.color,
-			            status: info.event.extendedProps.status
-			};
-        	
-            saveEventToServer(updatedEventData, true);
-
+            saveEventToServer(info.event.extendedProps, true);
         }
     });
 
@@ -218,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => console.error('Error:', error));
     }
 
-    function openModal(modalTitle, event, saveCallback, deleteCallback) {
+            function openModal(modalTitle, event, saveCallback, deleteCallback) {
             const modal = document.getElementById('eventModal');
             const titleInput = document.getElementById('eventTitle');
             const descriptionInput = document.getElementById('eventDescription');
@@ -276,4 +243,3 @@ document.addEventListener('DOMContentLoaded', function () {
         
     }
 });
-

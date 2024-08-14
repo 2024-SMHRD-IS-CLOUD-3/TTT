@@ -2,8 +2,9 @@ package com.smhrd.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import java.time.LocalTime;
+import java.time.OffsetTime;
+
 
 import javax.annotation.Generated;
 import javax.persistence.Column;
@@ -15,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,7 +38,7 @@ public class Schedule {
 	@ManyToOne
 	@JoinColumn(name = "tr_id", referencedColumnName = "tr_id", nullable = false)
 	private Trainer trainer;
-
+	
 	@Column(name="sche_content")
 	private String description;
 	
@@ -47,13 +47,14 @@ public class Schedule {
 	private LocalDate startDate;
 	
 	@Column(name="st_tm")
-	private LocalTime startTime;
+	private OffsetTime startTime;
+	
 
 	@Column(name="ed_dt")
 	private LocalDate endDate;
 	
 	@Column(name="ed_tm")
-	private LocalTime endTime;
+	private OffsetTime endTime;
 
 	@Column(name="sche_color")	
 	private String color;
