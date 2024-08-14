@@ -31,4 +31,8 @@ public class MainViewController {
 		return "membershipManagement";
 	}
 	
+	@GetMapping("/goMemberSchedule")
+	public String goMemberSchedule() {
+		return "memberSchedule";
+	}
 }

@@ -1,3 +1,4 @@
+
 #eventModal {
 	display: none;
 	position: fixed;
@@ -25,14 +26,9 @@
 }
 
 /* 애니메이션 */
-@keyframes fadeIn {from { opacity:0;
-	
-}
-
-to {
-	opacity: 1;
-}
-
+@keyframes fadeIn {
+	from { opacity:0; }
+	to { opacity: 1; }
 }
 
 /* 입력 필드 스타일 */

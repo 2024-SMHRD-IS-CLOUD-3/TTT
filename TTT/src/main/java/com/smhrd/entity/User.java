@@ -1,12 +1,15 @@
 package com.smhrd.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +30,12 @@ public class User {
     // 이름 
     @Column(name = "usr_name", length = 50)
     private String urName;
+    
+    // 생년월일
+    @Column(name = "ur_birthdate")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate  birthdate;
+
 
     // 전화번호
     @Column(name = "usr_phone", length = 20)
