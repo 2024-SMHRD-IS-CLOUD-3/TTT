@@ -29,7 +29,7 @@
 @keyframes fadeIn {
 	from { opacity:0; }
 	to { opacity: 1; }
-}
+  
 
 /* 입력 필드 스타일 */
 input[type="text"], input[type="color"] {

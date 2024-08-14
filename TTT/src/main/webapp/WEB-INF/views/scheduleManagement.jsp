@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원 상세 페이지</title>
+    <title>회원 상세 페이지</title>
     <link rel="stylesheet" href="resources/scheduleManagement.css">
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/main.min.css" rel="stylesheet">
     <link href="resources/calendar.css" rel="stylesheet">

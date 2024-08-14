@@ -36,7 +36,6 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate  birthdate;
 
-
     // 전화번호
     @Column(name = "usr_phone", length = 20)
     private String urPhone;
