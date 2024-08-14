@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
             right: 'dayGridMonth,timeGridWeek'
         },
         select: function (info) {
-            openModal('새로운 이벤트', null, function () {
+            openModal('새로운 일정', null, function () {
                 const title = document.getElementById('eventTitle').value;
                 const description = document.getElementById('eventDescription').value;
                 const trainerId = document.getElementById('trainerId').value;

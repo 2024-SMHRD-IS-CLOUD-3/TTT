@@ -39,11 +39,11 @@
 	
 	            <input type="color" id="eventColor" value="#ff0000">
 	
-	            <input type="text" id="eventStatus" placeholder="Enter event status">
+	            <input type="text" id="eventStatus" placeholder="일정 상태">
 	
-	            <button id="saveEvent" class="modal-button">Save Event</button>
-	            <button id="deleteEvent" class="modal-delete-button">Delete Event</button>
-	            <button id="closeModal" class="modal-close-button">Close</button>
+	            <button id="saveEvent" class="modal-button">저장</button>
+	            <button id="deleteEvent" class="modal-delete-button">삭제</button>
+	            <button id="closeModal" class="modal-close-button">닫기</button>
 	        </div>
 	    </div>
 
