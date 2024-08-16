@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.header {
+    background-color: #90caf9;
+    padding: 20px;
+    display: flex;
+     box-shadow: 0px 0px 20px black;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.header .logo {
+    height: 60px;
+}
+
+.header nav {
+    display: flex;
+    gap: 30px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 8px 16px;
+}
+
+.header nav a:hover, .header nav a:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.form-container {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 400px;
+    margin: 40px auto;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    transform: scale(0.9); /* 로그인 박스 크기를 70%로 축소 */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1d62e0;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form input[type="date"],
+form input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+}
+
+.gender {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.gender input[type="radio"] {
+    margin-right: 5px;
+}
+
+.gender label {
+    margin-right: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1d62e0;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0b47a1;
+}
+
+.footer {
+    background-color: #90caf9;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
