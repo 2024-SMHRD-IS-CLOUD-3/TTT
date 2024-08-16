@@ -14,8 +14,6 @@ public class TrainerController {
 	
 	@Autowired
 	private TrainerRepository repo;
-	private Trainer loginEntity;
-
 	
 	@PostMapping("/loginCheck")
 	public String loginCheck(Trainer entity, HttpSession session) {
@@ -29,7 +27,7 @@ public class TrainerController {
 			System.out.println("로그인 성공!");
 			System.out.println("로그인 info : " + entity.toString());
 		}
-		return "redirect:/";
+		return "redirect:/goMain";
 	}
 	
 	

@@ -12,10 +12,10 @@
 </head>
 <body>
     <div class="header">
-        <img src="/resources/logo.png" alt="Logo" class="logo">
+        <img src="/resources/image/logo.png" alt="Logo" class="logo">
         <nav>
-            <a href="#">홈</a>
-            <a href="#">마이페이지</a>
+            <a href="/">홈</a>
+            <a href="/goMyPage">마이페이지</a>
             <a href="#">일정관리</a>
             <a href="#">회원관리</a>
         </nav>
@@ -50,7 +50,7 @@
         <!-- FullCalendar JS -->
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 
-        <script src="resources/calendar.js"></script>
+        <script src="resources/js/calendar.js"></script>
     
     </div>
 

@@ -1,79 +1,166 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #c0fcde94;
+}
+
+.header {
+    background-color: #98c4e5;
+    padding: 10px 20px;
+    box-shadow: 0px 0px 20px black;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 100vh;
 }
 
-.container {
+.header .logo {
+    height: 60px;
+}
+
+
+.header .nav ul {
+    list-style: none;
     display: flex;
+    gap: 40px;
+    margin-right: 30px;
+}
+
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 8px 16px;
+    margin-right: 40px;
+}
+
+.header nav a:hover, .header nav a:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.profile-block {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
     width: 800px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    margin: 40px auto;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex; /* Flexbox를 사용하여 수평으로 배치 */
+    align-items: center; /* 수직으로 중앙에 맞춤 */
+    margin-top: 180px
 }
 
-.profile-section, .details-section {
-    padding: 20px;
+.profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 4; /* 전체 공간의 40% 차지 */
+    margin-right: 40px; /* 프로필 사진과 정보 사이에 여백 추가 */
 }
 
-.profile-section {
-    width: 30%;
-    border-right: 1px solid #ddd;
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px; /* 이름과 버튼 사이의 간격 추가 */
+    text-align: center;
 }
 
-.details-section {
-    width: 70%;
-    padding-left: 20px;
+.profile-image {
+    width: 350px; /* 프로필 이미지의 너비를 250px로 설정 */
+    height: 350px; /* 프로필 이미지의 높이를 250px로 설정 */
+    border-radius: 50%; /* 원형으로 만들기 위해 반지름을 50%로 설정 */
+    overflow: hidden;
+    margin-bottom: 30px; /* 이미지와 이름 사이에 간격 추가 */
 }
 
-h2 {
-    margin-bottom: 20px;
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 원래 비율을 유지하며 박스에 맞게 조정되도록 설정 */
 }
 
-.form-group {
-    margin-bottom: 15px;
+.change-photo {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #1d62e0;
+    background-color: white;
+    color: #1d62e0;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 30px; /* 이미지와 이름 사이에 간격 추가 */
 }
 
-.form-group label {
+.change-photo:hover {
+    background-color: #1d62e0;
+    color: white;
+}
+
+.profile-info {
+    text-align: left;
+    flex: 6; /* 전체 공간의 60% 차지 */
+    max-width: 400px;
+    width: 100%;
+}
+
+.profile-info label {
     display: block;
     margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
 }
 
-.form-group input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+.profile-info input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
 }
 
-button {
+.update {
     width: 100%;
     padding: 10px;
-    background-color: #71a3e4;
-    color: white;
+    background-color: #e3f2fd;
     border: none;
     border-radius: 5px;
+    color: #1d62e0;
+    font-size: 16px;
     cursor: pointer;
 }
 
-.update-button {
+.update:hover {
+    background-color: #bbdefb;
+}
+
+.submit {
     width: 100%;
     padding: 10px;
-    background-color: #71a3e4;
-    color: white;
+    background-color: #e3f2fd;
     border: none;
     border-radius: 5px;
+    color: #1d62e0;
+    font-size: 16px;
     cursor: pointer;
 }
 
-.update-button:hover {
-    background-color: #619be7;
+.submit:hover {
+    background-color: #bbdefb;
 }
 
-button {
-	background-color: #619be7;
+.footer {
+    background-color: #90caf9;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
