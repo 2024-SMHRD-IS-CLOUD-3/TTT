@@ -15,9 +15,9 @@
         <img src="/resources/image/logo.png" alt="Logo" class="logo">
         <nav>
             <a href="/">홈</a>
-            <a href="/goMyPage">마이페이지</a>
-            <a href="#">일정관리</a>
-            <a href="#">회원관리</a>
+            <a href="goMyPage">마이페이지</a>
+            <a href="goMain">일정관리</a>
+            <a href="selectUser" class="protected">회원관리</a>
         </nav>
     </div>
 

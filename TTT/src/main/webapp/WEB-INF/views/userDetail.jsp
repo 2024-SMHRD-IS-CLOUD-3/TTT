@@ -14,7 +14,7 @@
 		<img src="resources/logo.png" alt="Logo" class="logo">
 		<nav>
 			<a href="/">홈</a> <a href="goMyPage">마이페이지</a> <a href="goMain">일정관리</a>
-			<a href="userList">회원관리</a>
+			<a href="goUserManagePage">회원관리</a>
 		</nav>
 	</div>
 	<form action="/goModifyUser" method="post">

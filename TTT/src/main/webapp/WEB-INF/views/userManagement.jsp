@@ -8,27 +8,29 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>페이지 디자인</title>
-<link rel="stylesheet" href="resources/usr_Management.css">
+<link rel="stylesheet" href="resources/userManagement.css">
 <script src="resources/js/usr_Management.js" defer></script>
 </head>
 <body>
 
 
 	<div class="header">
-		<img src="resources/logo.png" alt="Logo" class="logo">
+		<img src="resources/image/logo.png" alt="Logo" class="logo">
 		<nav>
-			<a href="/">홈</a> <a href="goMyPage">마이페이지</a> <a href="goMain">일정관리</a>
-			<a href="goUsr_Management">회원관리</a>
+			<a href="/">홈</a>
+			<a href="goMyPage">마이페이지</a>
+			<a href="goMain">일정관리</a>
+			<a href="selectUser">회원관리</a>
 		</nav>
 	</div>
 
 	<div class="block1">
 		<div class="action-buttons">
 			<button class="action-button" onclick="addMember()">
-				<a href="/goUsr_registration">회원 추가 
+				<a href="goUserRegistration">회원 추가 
 			</button>
 			<button class="action-button" onclick="editMember()">
-				<a href="/goUsr_Member">회원 수정</a>
+				<a href="goUserDetail">회원 수정</a>
 			</button>
 			<form action="goDeleteUser" method="post">
 				<button class="action-button" onclick="deleteMember()">회원
@@ -53,12 +55,12 @@
 			</thead>
 			<c:forEach items="${userList}" var="user" varStatus="i">
                   <tr>
-                     <td>${user.usr_Id}</td>
-                     <td><a href="goUsr_Member?usr_ID=${user.id}">${user.usr_Name}</a></td>
+                     <td>${i.count}</td>
+                     <td><a href="goUsr_Member?usr_ID=${user.usr_Id}">${user.usr_Name}</a></td>
                      <td>${user.usr_Gender}</td>
                      <td>${user.usr_Birthdate}</td>
-                     <td>${user.exer_Count}</td>
-                     <td><a href="goUsr_Member?usr_ID=${user.id}" style="color: black">삭제</td>
+					 <td>${user.count}</td>
+                     <td><a href="goUsr_Member?usr_ID=${user.usr_Id}" style="color: black">삭제</td>
                   </tr>
                </c:forEach>
 		</table>

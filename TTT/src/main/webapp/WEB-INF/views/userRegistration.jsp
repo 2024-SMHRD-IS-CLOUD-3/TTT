@@ -6,50 +6,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 등록 페이지</title>
-    <link rel="stylesheet" href="resources/usr_registration.css">
+    <link rel="stylesheet" href="resources/userRegistration.css">
 </head>
 <body>
     <div class="header">
-        <img src="resources/logo.png" alt="Logo" class="logo">
+        <img src="resources/image/logo.png" alt="Logo" class="logo">
         <nav>
             <a href="/">홈</a>
             <a href="goMyPage">마이페이지</a>
             <a href="goMain">일정관리</a>
-            <a href="goUsr_Management">회원관리</a>
+            <a href="selectUser" class="protected">회원관리</a>
         </nav>
     </div>
 
     <div class="form-container">
         <h2>회원등록</h2>
-        <form>
+        <form action="registUser" method="post">
             <label for="name">이름</label>
-            <input type="text" id="name" placeholder="이름" required>
+            <input type="text" name="name" id="name" placeholder="이름" required>
 
             <label for="phone">전화번호</label>
-            <input type="tel" id="phone" placeholder="전화번호" required>
+            <input type="tel" name="phone" id="phone" placeholder="전화번호" required>
 
             <label for="address">주소</label>
-            <input type="text" id="address" placeholder="주소" required>
+            <input type="text" name="address" id="address" placeholder="주소" required>
 
             <label for="birthdate">생년월일</label>
-            <input type="date" id="birthdate" required>
+            <input type="date" name="birthdate" id="birthdate" required>
 
             <label for="height">키</label>
-            <input type="number" id="height" placeholder="키(cm)" required>
+            <input type="number" name="height" id="height" placeholder="키(cm)" required>
 
             <label for="weight">몸무게</label>
-            <input type="number" id="weight" placeholder="몸무게(kg)" required>
+            <input type="number" name="weight" id="weight" placeholder="몸무게(kg)" required>
 
             <label for="gender">성별</label>
             <div class="gender">
-                <input type="radio" id="male" name="gender" value="남자" required>
+                <input type="radio" id="male" name="gender" value="M" required>
                 <label for="male">남자</label>
-                <input type="radio" id="female" name="gender" value="여자">
+                <input type="radio" id="female" name="gender" value="W">
                 <label for="female">여자</label>
             </div>
 
             <label for="sessions">횟수</label>
-            <input type="number" id="sessions" placeholder="횟수" required>
+            <input type="number" name="count" id="sessions" placeholder="횟수" required>
 
             <button type="submit">등록</button>
         </form>

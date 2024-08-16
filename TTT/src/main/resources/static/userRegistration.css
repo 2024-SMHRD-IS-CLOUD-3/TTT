@@ -6,13 +6,16 @@ body {
 }
 
 .header {
-    background-color: #90caf9;
-    padding: 20px;
+    background-color: #98c4e5;
+    padding: 10px 20px;
+    box-shadow: 0px 0px 20px black;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
     display: flex;
-     box-shadow: 0px 0px 20px black;
     justify-content: space-between;
     align-items: center;
-    color: white;
 }
 
 .header .logo {
@@ -21,7 +24,8 @@ body {
 
 .header nav {
     display: flex;
-    gap: 30px;
+    gap: 40px;
+    margin-right: 30px;
 }
 
 .header nav a {

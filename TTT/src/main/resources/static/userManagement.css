@@ -1,0 +1,180 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* 배경색을 밝은 회색으로 변경 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    background-color: #98c4e5;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .logo {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 30px;
+}
+
+.header .logo img {
+    height: 60px;
+}
+
+.header nav {
+    display: flex;
+    justify-content: center;
+}
+
+.header nav a {
+    margin: 0 100px; /* 간격을 넓히기 위해 마진을 설정 */
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.header nav a:hover, .header nav a:focus {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* 블록1 */
+.block1 {
+    background-color: #fff; /* 배경색을 흰색으로 변경 */
+    padding: 20px;
+    margin: 20px;
+    border-radius: 15px; /* 더 둥근 모서리 */
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 추가 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.action-button {
+    background-color: #1d62e0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin: 0; /* 모든 버튼의 margin을 0으로 설정 */
+}
+
+.action-button:hover {
+    background-color: #0b47a1;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    gap: 20px; /* 버튼들 사이의 간격을 일정하게 유지 */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input[type="text"] {
+    padding: 12px;
+    border-radius: 30px; /* 검색 바도 둥글게 */
+    border: 1px solid #ccc;
+    width: 300px;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-bar input[type="text"]:focus {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 포커스 시 그림자 추가 */
+    outline: none;
+}
+
+.search-bar button {
+    background-color: #1d62e0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px; /* 버튼을 더 둥글게 */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #0b47a1;
+}
+
+/* 블록2 */
+.block2 {
+    padding: 40px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.1);
+    min-height: 570px; /* 블록2 높이를 고정 */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* 테이블 상단에 여백 추가 */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table thead th {
+    background-color: #1d62e0; /* 더 진한 파란색으로 변경 */
+    color: white;
+    padding: 15px;
+    border-bottom: 3px solid #ddd; /* 헤더 아래에 더 두꺼운 테두리 */
+}
+
+table tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* 짝수 줄에 다른 색상 적용 */
+}
+
+/* 블록3 */
+.block3 {
+    background-color: #fff;
+    padding: 40px;
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #333;
+    margin-bottom: 80px;
+}
+
+/* 푸터바 */
+.footer {
+    background-color: #90caf9;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
