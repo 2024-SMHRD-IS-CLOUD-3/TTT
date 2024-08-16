@@ -4,10 +4,10 @@ import java.time.LocalDate;
 
 public interface UserWithLatestCountDTO {
 	 String getTr_Id();
-   String getUsr_Id();
-   String getUsr_Name();
-    String getUsr_Gender();
-    LocalDate getUsr_Birthdate();
-   Integer getExer_Count();
+	 String getUsr_Id();
+	 String getUsr_Name();
+	 String getUsr_Gender();
+	 LocalDate getUsr_Birthdate();
+	 Integer getCount();
    
 }

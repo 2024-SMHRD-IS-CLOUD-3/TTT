@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (trainerId && userId) {
                     const newEvent = {
 					    id: Date.now(),
+					    title: title,
 					    description: description,
 					    startDate: info.startStr.split('T')[0],
 					    startTime: info.startStr.split('T')[1] ? info.startStr.split('T')[1] + '+09:00' : '00:00:00+09:00',
@@ -49,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
             calendar.unselect();
         },
         eventClick: function (info) {
+        
             openModal('일정 수정', info.event, function () {
                 const title = document.getElementById('eventTitle').value;
                 const description = document.getElementById('eventDescription').value;
@@ -165,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	    // 서버에서 기대하는 필드 이름과 일치하도록 전송하는 데이터 형식을 맞춥니다.
 	    const eventObject = {
 	        id: eventData.id,
+	        title: eventData.title,
 	        description: eventData.description,
 	        startDate: eventData.startDate,
 	        startTime: eventData.startTime,

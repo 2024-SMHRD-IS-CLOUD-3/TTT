@@ -13,36 +13,53 @@ body {
 .header {
     background-color: #98c4e5;
     padding: 10px 20px;
-    box-shadow: 0px 0px 20px black;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* 메뉴들을 가운데로 정렬 */
     align-items: center;
+}
+
+.header .logo {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 30px;
 }
 
 .header .logo img {
     height: 60px;
 }
 
+.header .nav {
+    display: flex;
+    justify-content: center;
+}
+
 .header .nav ul {
     list-style: none;
     display: flex;
     gap: 40px;
-    margin-right: 30px;
 }
 
 .header .nav ul li {
-    display: inline;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 .header .nav ul li a {
+    margin: 0 100px; /* 간격을 넓히기 위해 마진을 설정 */
+    color: white;
     text-decoration: none;
-    color: #fff;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 24px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 }
 
 .block1 {
@@ -63,13 +80,13 @@ body {
 
 .block1 h1 {
     font-size: 120px;
-    font-family:fantasy;
+    font-family: fantasy;
     -webkit-text-stroke: 1px rgba(0, 162, 255, 0.336);
     margin-bottom: -120px;
 }
 
 .block1 h3 {
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 24px;
     margin-top: 120px;
     -webkit-text-stroke: 1px rgba(0, 153, 255, 0.363);

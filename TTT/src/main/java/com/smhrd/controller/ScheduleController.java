@@ -4,6 +4,8 @@ package com.smhrd.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +40,7 @@ public class ScheduleController {
 
         // Trainer와 User 객체를 ID로 조회
         Optional<Trainer> trainerOpt = trainerRepository.findById(schedule.getTrainer().getId());
-        Optional<User> userOpt = userRepository.findById(schedule.getUser().getUrId());
+        Optional<User> userOpt = userRepository.findById(schedule.getUser().getId());
 
         if (trainerOpt.isPresent() && userOpt.isPresent()) {
             schedule.setTrainer(trainerOpt.get());
@@ -70,7 +72,7 @@ public class ScheduleController {
 
             // Trainer와 User 객체를 ID로 조회
             Optional<Trainer> trainerOpt = trainerRepository.findById(updatedSchedule.getTrainer().getId());
-            Optional<User> userOpt = userRepository.findById(updatedSchedule.getUser().getUrId());
+            Optional<User> userOpt = userRepository.findById(updatedSchedule.getUser().getId());
 
             if (trainerOpt.isPresent() && userOpt.isPresent()) {
                 existingSchedule.setTrainer(trainerOpt.get());
@@ -104,13 +106,34 @@ public class ScheduleController {
         }
     }
 
+//    @GetMapping
+//    public ResponseEntity<List<Schedule>> getAllSchedules() {
+//        try {
+//            List<Schedule> schedules = scheduleRepository.findAll();
+//            return new ResponseEntity<>(schedules, HttpStatus.OK);
+//        } catch (Exception e) {
+//            // 예외가 발생하면 500 오류와 함께 로그를 출력합니다.
+//            e.printStackTrace();
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+    
+    
     @GetMapping
-    public ResponseEntity<List<Schedule>> getAllSchedules() {
+    public ResponseEntity<List<Schedule>> getSchedulesForLoggedInTrainer(HttpSession session) {
         try {
-            List<Schedule> schedules = scheduleRepository.findAll();
+            // 세션에서 로그인된 트레이너 정보 가져오기
+            Trainer loggedInTrainer = (Trainer) session.getAttribute("loginTrainer");
+            
+            if (loggedInTrainer == null) {
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // 로그인된 트레이너가 없으면 401 응답
+            }
+
+            // 해당 트레이너와 관련된 스케줄 조회
+            List<Schedule> schedules = scheduleRepository.findByTrainer(loggedInTrainer);
+
             return new ResponseEntity<>(schedules, HttpStatus.OK);
         } catch (Exception e) {
-            // 예외가 발생하면 500 오류와 함께 로그를 출력합니다.
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
