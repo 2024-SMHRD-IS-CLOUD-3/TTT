@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh; /* 전체 화면 높이 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/resources/image/login.jpg'); /* 배경 이미지 경로 */
+    background-size: cover; /* 이미지가 화면에 맞게 커버되도록 설정 */
+    background-position: center; /* 이미지의 중앙이 화면 중앙에 위치하도록 설정 */
+    background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+}
+
+.header {
+    background-color: #98c4e5;
+    padding: 10px 20px;
+    box-shadow: 0px 0px 20px black;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .logo {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 30px;
+}
+
+.header .logo img {
+    height: 60px;
+}
+
+.header .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    margin-right: 30px;
+}
+
+.header .nav ul li {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.header .nav ul li a {
+    margin: 0 100px; /* 간격을 넓히기 위해 마진을 설정 */
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;;
+}
+
+/* 검은색 박스 설정 */
+.black-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7); /* 검은색 박스의 투명도 조절 */
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    transform: scale(0.9); /* 박스 크기를 70%로 축소 */
+}
+
+.toggle-container {
+    width: 350px;
+    background-color: #1c3e7d;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    transform: scale(1.0); /* 로그인 박스 크기를 70%로 축소 */
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.toggle-labels {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background-color: #1c3e7d;
+    color: white;
+    cursor: pointer;
+}
+
+.toggle-labels label {
+    width: 50%;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 18px;
+    color: #6f83aa;
+    cursor: pointer;
+}
+
+.toggle-labels label.active {
+    color: white;
+}
+
+.forms {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    width: 200%;
+    transform: translateX(0%);
+}
+
+
+/* 라디오 버튼 클릭에 따른 폼 전환 */
+#login:checked ~ .login-block .forms {
+    transform: translateX(0%); /* 로그인 폼이 보임 */
+}
+
+#signup:checked ~ .login-block .forms {
+    transform: translateX(-50%); /* 회원가입 폼이 보임 */
+}
+
+/* 활성화된 라벨 스타일링 */
+.toggle-labels label {
+    cursor: pointer;
+    color: #6f83aa;
+}
+
+.toggle-labels label.active {
+    color: white;
+}
+
+.form {
+    width: 50%;
+    padding: 20px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+    text-align: left;
+    font-size: 14px;
+}
+
+.form input[type="text"],
+.form input[type="password"],
+.form input[type="date"],
+.form input[type="tel"],
+.form input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 25px;
+    border: none;
+    background-color: #2c487f;
+    color: white;
+    font-size: 16px;
+    padding-left: 15px;
+}
+
+.form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1d62e0;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.footer {
+    background-color: rgba(144, 202, 249, 0.8); /* 투명도를 가진 배경색 */
+    padding: 20px;
+    text-align: center;
+    color: #333;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}

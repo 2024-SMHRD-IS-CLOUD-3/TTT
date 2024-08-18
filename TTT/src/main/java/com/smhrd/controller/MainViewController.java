@@ -2,6 +2,8 @@ package com.smhrd.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainViewController {
@@ -26,13 +28,23 @@ public class MainViewController {
 		return "myPage";
 	}
 	
-	@GetMapping("/goManagePage")
+	@GetMapping("/goUserManagePage")
 	public String goManagePage() {
-		return "membershipManagement";
+		return "userManagement";
 	}
 	
 	@GetMapping("/goMemberSchedule")
 	public String goMemberSchedule() {
 		return "memberSchedule";
+	}
+	
+	@GetMapping("/goUserRegistration")
+	public String goUserRegistration() {
+		return "userRegistration";
+	}
+	
+	@GetMapping("/goUserDetail")
+	public String goUserModify() {
+		return "userDetail";
 	}
 }

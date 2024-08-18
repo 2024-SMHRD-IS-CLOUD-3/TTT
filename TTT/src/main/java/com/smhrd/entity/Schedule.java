@@ -30,6 +30,9 @@ public class Schedule {
 	@JoinColumn(name = "tr_id", referencedColumnName = "tr_id", nullable = false)
 	private Trainer trainer;
 	
+	@Column(name="sche_title")
+	private String title;
+	
 	@Column(name="sche_content")
 	private String description;
 	
