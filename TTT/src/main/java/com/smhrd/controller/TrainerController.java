@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.smhrd.entity.Trainer;
 import com.smhrd.repository.TrainerRepository;
 
@@ -45,8 +44,6 @@ public class TrainerController {
 		entity.setType("trainer");
 		entity.setJoinedAt(LocalDateTime.now());
 		entity.setProfileImg("resources/image/default_profile.png");
-		
-		
 		entity = repo.save(entity);
 		
 		if(entity != null) {
@@ -57,11 +54,17 @@ public class TrainerController {
 		return "redirect:/";
 	}
 	
-	@PostMapping("/deleteTrainer")
+	@RequestMapping("/deleteTrainer")
 	public String deleteTrainer(HttpSession session) {
 		Trainer entity = (Trainer)session.getAttribute("loginTrainer");
 		
 		repo.deleteById(entity.getId());
+
+		if(entity != null) {
+			session.invalidate(); // 세션 무효화
+		}
+		
+
 		return "redirect:/";
 	}
 
@@ -70,18 +73,12 @@ public class TrainerController {
 	public String updateTrainer(Trainer entity, HttpSession session) {
 		
 		Trainer existingTrainer = (Trainer)session.getAttribute("loginTrainer");
-		System.err.println(entity);
 		
 		existingTrainer.setBirthdate(entity.getBirthdate());
 		existingTrainer.setPw(entity.getPw());
 		existingTrainer.setProfileImg(entity.getProfileImg());
 		existingTrainer.setEmail(entity.getEmail());
 		existingTrainer.setPhone(entity.getPhone());
-		
-//		entity.setJoinedAt(existingTrainer.getJoinedAt());
-//		entity.setType(existingTrainer.getType());
-//		entity.setProfileImg(existingTrainer.getProfileImg());
-//		entity.setToken(existingTrainer.getToken());
 
 		if(existingTrainer != null) {
 			repo.save(existingTrainer);

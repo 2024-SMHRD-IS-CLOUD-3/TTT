@@ -35,7 +35,7 @@
             <input name="pw" type="password" id="password">
             
             <lable for="password2">비밀번호 확인</lable>
-            <input name="pw" type="password" id="password2">
+            <input name="pw2" type="password" id="password2">
         
             <label for="birthdate">생년월일</label>
             <input name="birthdate" type="date" id="birthdate" value="${loginTrainer.birthdate}">
@@ -52,7 +52,7 @@
             </form>
             <hr color="white">
             <form action="deleteTrainer" method="post">
-            <button class="submit"><a href ="#">회원탈퇴</a></button>
+            <button class="submit"><a href ="deleteTrainer">회원탈퇴</a></button>
         </div>
     </div>
 

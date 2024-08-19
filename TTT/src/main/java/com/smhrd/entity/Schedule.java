@@ -2,6 +2,7 @@ package com.smhrd.entity;
 
 import java.time.LocalDate;
 import java.time.OffsetTime;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class Schedule {
 	@Column(name="sche_idx")
 	private Long id;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "tr_id", referencedColumnName = "tr_id", nullable = false)
 	private Trainer trainer;
 	
@@ -56,7 +57,7 @@ public class Schedule {
 	@Column(name="sche_status")
 	private String status;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "usr_id", referencedColumnName = "usr_id", nullable = false)
 	private User user;
 
