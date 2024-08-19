@@ -90,3 +90,27 @@ input[type="text"], input[type="color"] {
 .modal-delete-button:hover {
 	background-color: #e68900;
 }
+
+/* 모달창 내부의 select 요소 스타일링 */
+select {
+    width: 100%; /* 전체 너비로 설정 */
+    padding: 10px; /* 내부 여백 */
+    border: 1px solid #ccc; /* 테두리 색상 */
+    border-radius: 4px; /* 모서리를 둥글게 */
+    background-color: #f9f9f9; /* 배경색 */
+    font-size: 16px; /* 폰트 크기 */
+    color: #333; /* 글자 색상 */
+    appearance: none; /* 기본 select 화살표 숨기기 (크로스 브라우저 지원) */
+    -webkit-appearance: none; /* WebKit 브라우저에서 기본 select 화살표 숨기기 */
+    -moz-appearance: none; /* Firefox에서 기본 select 화살표 숨기기 */
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns%3D"http%3A//www.w3.org/2000/svg" viewBox%3D"0 0 20 20"%3E%3Cpath fill%3D"%23333" d%3D"M7 7l3-3 3 3H7zm0 6h6l-3 3-3-3z"/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 8px;
+}
+
+select:focus {
+    border-color: #66afe9; /* 포커스 시 테두리 색상 */
+    outline: none; /* 포커스 시 기본 outline 제거 */
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6); /* 포커스 시 그림자 효과 */
+}

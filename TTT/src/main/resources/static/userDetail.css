@@ -1,0 +1,206 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    background-color: #98c4e5;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .logo {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 30px;
+}
+
+.header .logo img {
+    height: 60px;
+}
+
+.header nav {
+    display: flex;
+    justify-content: center;
+}
+
+.header nav a {
+    margin: 0 100px;
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.header nav a:hover, .header nav a:focus {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.block1 {
+    display: flex;
+    padding: 40px;
+    background-color: #ffffff;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* 더 은은한 그림자 */
+    margin-bottom: -40px;
+    z-index: 10;
+    position: relative;
+    border-radius: 12px; /* 적당한 둥근 모서리 */
+    transition: transform 0.3s ease; /* 마우스 호버 시 살짝 올라오게 */
+}
+
+.profile-pic {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-right: 2px solid #f0f0f0; /* 오른쪽에 구분선 추가 */
+}
+
+.profile-pic img {
+    max-width: 50%;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid #eeeeee; /* 사진에 은은한 테두리 */
+}
+
+.profile-change-btn {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 2px solid #61D8C6;
+    color: #61D8C6;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.profile-change-btn:hover {
+    background-color: #61D8C6;
+    color: white;
+}
+
+.profile-info {
+    flex: 2;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-info h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    margin-left : 30px;
+    color: #333;
+    font-weight: 700; /* 폰트 굵기 강조 */
+}
+
+.profile-info ul {
+    list-style: none;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #555; /* 텍스트 색상 조정 */
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* 버튼 간격을 좀 더 좁게 */
+}
+
+.buttons button {
+    padding: 8px 20px;
+    margin-left : 40px;
+    background-color: #333; /* 어두운 배경색 */
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+    background-color: #555; /* 버튼에 호버 효과 */
+}
+
+.block2 {
+    display: flex;
+    justify-content: center; /* 카드들을 가운데로 모으기 */
+    padding: 120px 150px 80px 150px;
+    background-color: #ffffff; /* 블록2 배경색 추가 */
+    box-shadow: inset 0px 0px 15px rgba(0, 0, 0, 0.1); /* 내부 그림자 추가 */
+    border-radius: 10px;
+    gap: 120px;
+    background-image: url('/resources/image/userDetail.jpg');
+}
+
+.stat-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 60px 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px;
+}
+
+.stat-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.stat-image img {
+    max-width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+.stat-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 18px;
+    color: black;
+}
+
+.footer {
+    background-color: #90caf9;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    width: 100%;
+    bottom: 0;
+}
+

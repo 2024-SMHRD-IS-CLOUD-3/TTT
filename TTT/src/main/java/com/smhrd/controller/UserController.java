@@ -2,21 +2,28 @@ package com.smhrd.controller;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.smhrd.entity.Exercise;
+import com.smhrd.entity.Schedule;
 import com.smhrd.entity.Trainer;
 import com.smhrd.entity.User;
 import com.smhrd.repository.ExerciseRepository;
+import com.smhrd.repository.ScheduleRepository;
 import com.smhrd.repository.UserRepository;
 import com.smhrd.repository.UserWithLatestCountDTO;
 
@@ -25,26 +32,25 @@ public class UserController {
 
 	@Autowired
 	private UserRepository userRepository;
-
+	
+	@Autowired
+	private ScheduleRepository scheduleRepository;
+	
 	@PostMapping("/registUser")
 	public String registUser(User entity, HttpSession session) {
 		
+		
 		// 회원정보 추가전 entity값 확인
-		System.out.println(entity);
-		System.out.println("넘어오긴 옴");
 		try {
 			entity.setId("");
 			entity.setJoinedAt(LocalDateTime.now());
-			entity.setProfileImg("/resources/image/default_profile.jpg");
+			entity.setProfileImg("default_profile.jpg");
 			entity.setTrainer((Trainer)session.getAttribute("loginTrainer"));
 			userRepository.save(entity);// ->insert sql 문장 실행
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		System.out.println(entity);
-
 		// 회원정보 추가 성공시 db tb_user에 회원정보 추가후 회원정보 추가 화면으로
 		if (entity != null) {
 			System.out.println("Success CreateUser!!!");
@@ -81,16 +87,25 @@ public class UserController {
 	}
 
 	@RequestMapping("/goDetailUser")
-	public String goDetailUser(@RequestParam("urId") String urId, Model model) {
-		User entity = userRepository.findById(urId).get();
-		model.addAttribute("user", entity);
+	public String goDetailUser(@RequestParam("userId") String userId, Model model) {
+		Optional<User> userOpt = userRepository.findById(userId);
+		
+		if(userOpt.isPresent()) {
+			model.addAttribute("userDetail", userOpt.get());
+		}
 
-		return "detailUser";
+		return "userDetail";
 	}
+	
+    @RequestMapping("/goUserSchedule")
+    public String goUserSchedule(Model model, @ModelAttribute("userDetail") User userDetail) {
+        model.addAttribute("userDetail", userDetail);
+        return "memberSchedule"; 
+    }
 
 	@RequestMapping("/goModifyUser")
-	public String goModifyUser(@RequestParam("urId") String id, User entity, Model model) {
-		User existEntity = userRepository.findById(id).get();
+	public String goModifyUser(@RequestParam("userId") String userId, User entity, Model model) {
+		User existEntity = userRepository.findById(userId).get();
 		System.out.println(existEntity);
 		existEntity.setGender(entity.getGender());
 		existEntity.setPhone(entity.getPhone());
@@ -98,7 +113,7 @@ public class UserController {
 		existEntity.setHeight(entity.getHeight());
 		existEntity.setWeight(entity.getWeight());
 		userRepository.save(existEntity);
-		entity = userRepository.findById(id).get();
+		entity = userRepository.findById(userId).get();
 		model.addAttribute("user", entity);
 		System.out.println(entity);
 
@@ -106,10 +121,25 @@ public class UserController {
 	}
 
 	@RequestMapping("/goDeleteUser")
-	public String goDeleteUser(@RequestParam("urId") String urId) {
-		userRepository.deleteById(urId);
+	public String goDeleteUser(@RequestParam("userId") String userId) {
+		userRepository.deleteById(userId);
 
-		return "redirect:/userList";
+		return "redirect:/selectUser";
 	}
-
+	
+    @GetMapping("/goUserSchedule")
+    public String goUserSchedule(@RequestParam("userId") String userId, Model model) {
+    	System.err.println("userId : " + userId);
+    	Optional<User> userOpt = userRepository.findById(userId);
+        System.err.println("UserOpt : " + userOpt);
+        if (userOpt.isPresent()) {
+            List<Schedule> schedules = scheduleRepository.findByUser(userOpt.get());
+            model.addAttribute("userDetail", userOpt.get());
+            model.addAttribute("schedules", schedules);
+            return "memberSchedule"; // memberSchedule.jsp 페이지로 이동
+        } else {
+            return "redirect:/errorPage"; // 사용자 정보가 없을 경우 오류 페이지로 리디렉션
+        }
+    }
+	
 }

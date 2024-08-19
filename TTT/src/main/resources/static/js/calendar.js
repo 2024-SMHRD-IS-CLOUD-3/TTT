@@ -1,6 +1,21 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById('calendar');
+	const userIdSelect = document.getElementById('userId');
+
+    // 서버에서 사용자 목록을 가져와 select 태그에 추가
+    fetch('/api/users/list')
+        .then(response => response.json())
+        .then(users => {
+            users.forEach(user => {
+                const option = document.createElement('option');
+                option.value = user.id;
+                option.textContent = user.name;  // 사용자 이름 표시
+                userIdSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching user list:', error));
+
 
     const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -16,40 +31,44 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         select: function (info) {
             openModal('새로운 일정', null, function () {
-                const title = document.getElementById('eventTitle').value;
-                const description = document.getElementById('eventDescription').value;
-                const trainerId = document.getElementById('trainerId').value;
-                const userId = document.getElementById('userId').value;
-                const color = document.getElementById('eventColor').value;
-                const status = document.getElementById('eventStatus').value;
+        const title = document.getElementById('eventTitle').value;
+        const description = document.getElementById('eventDescription').value;
+        const trainerId = document.getElementById('trainerId').value;
+        const userId = document.getElementById('userId').value;
+        const color = document.getElementById('eventColor').value;
+        const status = document.getElementById('eventStatus').value;
+        const allDay = info.allDay; // 종일 이벤트 여부를 확인합니다.
 
-                if (trainerId && userId) {
-                    const newEvent = {
-					    id: Date.now(),
-					    title: title,
-					    description: description,
-					    startDate: info.startStr.split('T')[0],
-					    startTime: info.startStr.split('T')[1] ? info.startStr.split('T')[1] + '+09:00' : '00:00:00+09:00',
-					    endDate: info.endStr ? info.endStr.split('T')[0] : info.startStr.split('T')[0],
-					    endTime: info.endStr ? (info.endStr.split('T')[1]||'00:00:00') + '+09:00' : '23:59:59+09:00',
-					    trainerId: trainerId,
-					    userId: userId,
-					    color: color,
-					    status: status
-					};
+        if (trainerId && userId) {
+            const newEvent = {
+                id: Date.now(),
+                title: title,
+                description: description,
+                startDate: info.startStr.split('T')[0],
+                startTime: info.allDay ? null : (info.startStr.split('T')[1] || '00:00:00+09:00'),
+                endDate: info.endStr ? info.endStr.split('T')[0] : info.startStr.split('T')[0],
+                endTime: info.allDay ? null : (info.endStr ? (info.endStr.split('T')[1] || '23:59:59+09:00') : '23:59:59+09:00'),
+                trainerId: trainerId,
+                userId: userId,
+                color: color,
+                status: status,
+                allDay: allDay // 종일 여부 추가
+            };
 
-                    calendar.addEvent({
-                        title: title,
-                        start: newEvent.startDate + 'T' + newEvent.startTime,
-                        end: newEvent.endDate + 'T' + newEvent.endTime,
-                        extendedProps: newEvent
-                    });
-                    saveEventToServer(newEvent);
-                }
+            console.log(newEvent);
+            calendar.addEvent({
+                title: title,
+                start: newEvent.startDate + 'T' + newEvent.startTime,
+                end: newEvent.endDate + 'T' + newEvent.endTime,
+                allDay: allDay, // 종일 여부 추가
+                extendedProps: newEvent
             });
-            calendar.unselect();
-        },
-        eventClick: function (info) {
+            saveEventToServer(newEvent);
+        }
+    });
+    calendar.unselect();
+},
+    eventClick: function (info) {
         
             openModal('일정 수정', info.event, function () {
                 const title = document.getElementById('eventTitle').value;
@@ -150,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     extendedProps: {
                         description: schedule.description,
                         trainerId: schedule.trainer.id,
-                        userId: schedule.user.urId,
+                        userId: schedule.user.id,
                         color: schedule.color,
                         status: schedule.status
                     }
@@ -158,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 successCallback(events);
             })
             .catch(error => failureCallback(error));
+        
     }
 
     function saveEventToServer(eventData, isEdit = false) {
@@ -174,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	        endDate: eventData.endDate,
 	        endTime: eventData.endTime,
 	        trainer: { id: eventData.trainerId }, // trainer 객체로 래핑
-	        user: { urId: eventData.userId },            // user 객체로 래핑
+	        user: { id: eventData.userId },            // user 객체로 래핑
 	        color: eventData.color,
 	        status: eventData.status
 	    };
@@ -238,21 +258,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('One or more modal elements are missing.');
                 return;
             }
-
             modalTitleElement.textContent = modalTitle;
 
             if (event) {
                 titleInput.value = event.title || '';
                 descriptionInput.value = event.extendedProps.description || '';
-                trainerInput.value = event.extendedProps.trainerId || '';
-                userInput.value = event.extendedProps.userId || '';
+                trainerInput.value = event.extendedProps.trainerId;
+                console.log(event);
+                userInput.value = event.extendedProps.userId;
                 colorInput.value = event.extendedProps.color || '#ff0000';
                 statusInput.value = event.extendedProps.status || '';
                 deleteButton.style.display = 'inline';
             } else {
                 titleInput.value = '';
                 descriptionInput.value = '';
-                trainerInput.value = '';
+                trainerInput.value = trainerInput.value;
                 userInput.value = '';
                 colorInput.value = '#ff0000';
                 statusInput.value = '';

@@ -20,7 +20,6 @@ body {
     background-color: #90caf9;
     padding: 20px;
     display: flex;
-    box-shadow: 0px 0px 20px black;
     justify-content: space-between;
     align-items: center;
     color: white;
@@ -37,13 +36,13 @@ body {
 
 .header nav {
     display: flex;
-    gap: 30px;
+    gap: 20px;
 }
 
 .header nav a {
     color: white;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 18px;
     padding: 8px 16px;
 }
 

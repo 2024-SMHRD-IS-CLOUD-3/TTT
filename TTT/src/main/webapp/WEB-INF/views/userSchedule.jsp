@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 페이지</title>
-    <link rel="stylesheet" href="resources/usr_Schedule.css">
+    <link rel="stylesheet" href="resources/userSchedule.css">
 	  	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
 	    <script>
 	
@@ -23,12 +23,12 @@
 </head>
 <body>
     <div class="header">
-        <img src="resources/logo.png" alt="Logo" class="logo">
+        <img src="resources/image/logo.png" alt="Logo" class="logo">
         <nav>
             <a href="/">홈</a>
             <a href="goMyPage">마이페이지</a>
             <a href="goMain">일정관리</a>
-            <a href="goUsr_Management">회원관리</a>
+            <a href="selectUser">회원관리</a>
         </nav>
     </div>
     <div class="sidebar">
