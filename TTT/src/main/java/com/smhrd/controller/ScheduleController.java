@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.smhrd.entity.Schedule;
@@ -34,10 +35,11 @@ public class ScheduleController {
     @PostMapping
     public ResponseEntity<Schedule> createSchedule(@RequestBody Schedule schedule) {
         // 유효성 검사 (예시)
+    	System.err.println("DB에 저장 중");
         if (schedule.getStartDate().isAfter(schedule.getEndDate())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
+        
         // Trainer와 User 객체를 ID로 조회
         Optional<Trainer> trainerOpt = trainerRepository.findById(schedule.getTrainer().getId());
         Optional<User> userOpt = userRepository.findById(schedule.getUser().getId());
@@ -105,18 +107,6 @@ public class ScheduleController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
-//    @GetMapping
-//    public ResponseEntity<List<Schedule>> getAllSchedules() {
-//        try {
-//            List<Schedule> schedules = scheduleRepository.findAll();
-//            return new ResponseEntity<>(schedules, HttpStatus.OK);
-//        } catch (Exception e) {
-//            // 예외가 발생하면 500 오류와 함께 로그를 출력합니다.
-//            e.printStackTrace();
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
     
     
     @GetMapping
@@ -138,5 +128,21 @@ public class ScheduleController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    
+    @GetMapping("/user")
+    public ResponseEntity<List<Schedule>> getUserSchedules(@RequestParam("userId") String userId) {
+        Optional<User> userOpt = userRepository.findById(userId);
+
+        if (userOpt.isPresent()) {
+            List<Schedule> schedules = scheduleRepository.findByUser(userOpt.get());
+            return new ResponseEntity<>(schedules, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    
+
+
 }
 

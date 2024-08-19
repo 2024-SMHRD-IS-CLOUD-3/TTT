@@ -49,20 +49,25 @@
 					<div class="form signup-form">
 					<form action="registTrainer" method="post">
 							<label for="signup-id">아이디</label>
-							 <input name="id" type="text" id="signup-id" placeholder="아이디" required>
-							  <label for="signup-password">비밀번호</label>
-							   <input name="pw"type="password" id="signup-password" placeholder="비밀번호" required>
-							    <label for="signup-password-confirm">비밀번호 확인</label>
-							    <input name="pwCheck" type="password" id="signup-password-confirm" placeholder="비밀번호 확인" required>
-							    <label for="signup-name">이름</label>
+							<input name="id" type="text" id="signup-id" placeholder="아이디" required>
+
+							<label for="signup-password">비밀번호</label>
+							<input name="pw" type="password" id="signup-password" placeholder="비밀번호" required>
+
+							<label for="signup-password-confirm">비밀번호 확인</label>
+							<input name="pwCheck" type="password" id="signup-password-confirm" placeholder="비밀번호 확인" required>
+
+							<label for="signup-name">이름</label>
 							<input name="name" type="text" id="signup-name" placeholder="이름" required>
 
 							<label for="signup-birthdate">생년월일</label>
-							 <input name="birthdate" type="date" id="signup-birthdate" placeholder="생년월일" required>
-							  <label for="signup-phone">전화번호</label>
-							   <input name="phone" type="tel" id="signup-phone" placeholder="전화번호" required>
-							    <label for="signup-email">이메일</label>
-							     <input name="email" type="email" id="signup-email" placeholder="이메일" required>
+							<input name="birthdate" type="date" id="signup-birthdate" placeholder="생년월일" required>
+
+							<label for="signup-phone">전화번호</label>
+							<input name="phone" type="tel" id="signup-phone" placeholder="전화번호" required>
+
+							<label for="signup-email">이메일</label>
+							<input name="email" type="email" id="signup-email" placeholder="이메일" required>
 
 							<button type="submit">회원가입</button>
 							<br>

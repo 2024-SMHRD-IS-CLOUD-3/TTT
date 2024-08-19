@@ -18,36 +18,36 @@
             <a href="selectUser">회원관리</a>
         </nav>
     </div>
-<form action="registTrainer" method="post">
+<form action="updateTrainer" method="post">
     <div class="profile-block">
         <div class="profile-image-container">
             <div class="profile-image">
-                <img src= "profileImg" alt="">
+                <img src= "/resources/image/default_profile.png" alt="">
             </div>
             <div class="profile-name">${loginTrainer.name}</div>
             <button class="change-photo">프로필 사진 변경</button>
         </div>
         <div class="profile-info">
             <label for="id">아이디</label>
-            <input name="id" type="text" id="id" placeholder="${loginTrainer.id}">
+            <input name="id" type="text" id="id" value="${loginTrainer.id}">
         
             <label for="password">비밀번호</label>
             <input name="pw" type="password" id="password">
             
-            <lable for="password">비밀번호 확인</lable>
-            <input name="pw" type="password" id="password">
+            <lable for="password2">비밀번호 확인</lable>
+            <input name="pw" type="password" id="password2">
         
             <label for="birthdate">생년월일</label>
-            <input name="birthdate" type="date" id="birthdate" placeholder="${loginTrainer.birthdate}">
+            <input name="birthdate" type="date" id="birthdate" value="${loginTrainer.birthdate}">
         
             <label for="phone">전화번호</label>
-            <input name="phone" type="tel" id="phone" placeholder="${loginTrainer.phone}">
+            <input name="phone" type="tel" id="phone" value="${loginTrainer.phone}">
         
             <label for="email">이메일</label>
-            <input name="email" type="email" id="email" placeholder="${loginTrainer.email}">
+            <input name="email" type="email" id="email" value="${loginTrainer.email}">
         
         	
-            <form action="logout" method="post">
+            <form action="updateTrainer" method="post">
                     <button class="update" type="submit">수   정</button>
             </form>
             <hr color="white">

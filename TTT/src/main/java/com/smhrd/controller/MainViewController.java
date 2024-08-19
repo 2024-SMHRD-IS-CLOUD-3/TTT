@@ -33,10 +33,6 @@ public class MainViewController {
 		return "userManagement";
 	}
 	
-	@GetMapping("/goMemberSchedule")
-	public String goMemberSchedule() {
-		return "memberSchedule";
-	}
 	
 	@GetMapping("/goUserRegistration")
 	public String goUserRegistration() {
@@ -47,4 +43,6 @@ public class MainViewController {
 	public String goUserModify() {
 		return "userDetail";
 	}
+	
+	
 }
