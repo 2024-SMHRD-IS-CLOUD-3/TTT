@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById('calendar');
 
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
             right: 'dayGridMonth,timeGridWeek'
         },
         select: function (info) {
-            openModal('새로운 이벤트', null, function () {
+            openModal('새로운 일정', null, function () {
                 const title = document.getElementById('eventTitle').value;
                 const description = document.getElementById('eventDescription').value;
                 const trainerId = document.getElementById('trainerId').value;
@@ -22,19 +23,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 const color = document.getElementById('eventColor').value;
                 const status = document.getElementById('eventStatus').value;
 
-                if (title && trainerId && userId) {
+                if (trainerId && userId) {
                     const newEvent = {
-                        id: Date.now(),
-                        description: description,
-                        startDate: info.startStr.split('T')[0],
-                        startTime: info.startStr.split('T')[1] || '00:00:00',
-                        endDate: info.endStr ? info.endStr.split('T')[0] : info.startStr.split('T')[0],
-                        endTime: info.endStr ? info.endStr.split('T')[1] || '23:59:59' : '23:59:59',
-                        trainerId: trainerId,
-                        userId: userId,
-                        color: color,
-                        status: status
-                    };
+					    id: Date.now(),
+					    title: title,
+					    description: description,
+					    startDate: info.startStr.split('T')[0],
+					    startTime: info.startStr.split('T')[1] ? info.startStr.split('T')[1] + '+09:00' : '00:00:00+09:00',
+					    endDate: info.endStr ? info.endStr.split('T')[0] : info.startStr.split('T')[0],
+					    endTime: info.endStr ? (info.endStr.split('T')[1]||'00:00:00') + '+09:00' : '23:59:59+09:00',
+					    trainerId: trainerId,
+					    userId: userId,
+					    color: color,
+					    status: status
+					};
+
                     calendar.addEvent({
                         title: title,
                         start: newEvent.startDate + 'T' + newEvent.startTime,
@@ -47,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
             calendar.unselect();
         },
         eventClick: function (info) {
+        
             openModal('일정 수정', info.event, function () {
                 const title = document.getElementById('eventTitle').value;
                 const description = document.getElementById('eventDescription').value;
@@ -93,10 +97,41 @@ document.addEventListener('DOMContentLoaded', function () {
 		    document.getElementById('eventStatus').value = info.event.extendedProps.status || '';
         },
         eventDrop: function (info) {
-            saveEventToServer(info.event.extendedProps, true);
+        	console.log("eventDrop 부분");
+        	
+        	updatedEventData = {
+			            id: info.event.id,
+			            description: info.event.extendedProps.description,
+			            startDate: info.event.startStr.split('T')[0],
+			            startTime: info.event.startStr.split('T')[1] || '00:00:00',
+			            endDate: info.event.endStr ? info.event.endStr.split('T')[0] : info.event.startStr.split('T')[0],
+			            endTime: info.event.endStr ? info.event.endStr.split('T')[1] || '23:59:59' : '23:59:59',
+			            trainerId: info.event.extendedProps.trainerId , // trainer 객체로 래핑
+	       				userId: info.event.extendedProps.userId,            // user 객체로 래핑
+			            color: info.event.extendedProps.color,
+			            status: info.event.extendedProps.status
+			};
+        	
+    		saveEventToServer(updatedEventData, true);    	
         },
         eventResize: function (info) {
-            saveEventToServer(info.event.extendedProps, true);
+        	console.log("eventResize 부분 : ", info.event);
+        	console.log(info.event.extendedProps.trainerId);
+        	updatedEventData = {
+			            id: info.event.id,
+			            description: info.event.extendedProps.description,
+			            startDate: info.event.startStr.split('T')[0],
+			            startTime: info.event.startStr.split('T')[1] || '00:00:00',
+			            endDate: info.event.endStr ? info.event.endStr.split('T')[0] : info.event.startStr.split('T')[0],
+			            endTime: info.event.endStr ? info.event.endStr.split('T')[1] || '23:59:59' : '23:59:59',
+			            trainerId: info.event.extendedProps.trainerId , // trainer 객체로 래핑
+	       				userId: info.event.extendedProps.userId,            // user 객체로 래핑
+			            color: info.event.extendedProps.color,
+			            status: info.event.extendedProps.status
+			};
+        	
+            saveEventToServer(updatedEventData, true);
+
         }
     });
 
@@ -104,7 +139,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function fetchEventsFromServer(fetchInfo, successCallback, failureCallback) {
-        fetch('/api/schedules')
+        const userId = document.getElementById('userId').value;
+        console.log("User ID:", userId);
+        
+        fetch('/api/schedules/user?userId='+userId)
             .then(response => response.json())
             .then(data => {
                 const events = data.map(schedule => ({
@@ -125,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => failureCallback(error));
     }
 
+
     function saveEventToServer(eventData, isEdit = false) {
 	    const url = isEdit ? `/api/schedules/${eventData.id}` : '/api/schedules';
 	    const method = isEdit ? 'PUT' : 'POST';
@@ -132,6 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	    // 서버에서 기대하는 필드 이름과 일치하도록 전송하는 데이터 형식을 맞춥니다.
 	    const eventObject = {
 	        id: eventData.id,
+	        title: eventData.title,
 	        description: eventData.description,
 	        startDate: eventData.startDate,
 	        startTime: eventData.startTime,
@@ -185,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => console.error('Error:', error));
     }
 
-            function openModal(modalTitle, event, saveCallback, deleteCallback) {
+    function openModal(modalTitle, event, saveCallback, deleteCallback) {
             const modal = document.getElementById('eventModal');
             const titleInput = document.getElementById('eventTitle');
             const descriptionInput = document.getElementById('eventDescription');
@@ -243,3 +283,4 @@ document.addEventListener('DOMContentLoaded', function () {
         
     }
 });
+

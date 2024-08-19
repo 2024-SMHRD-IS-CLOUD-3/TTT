@@ -14,7 +14,7 @@
     <div class="header">
         <img src="/resources/image/logo.png" alt="Logo" class="logo">
         <nav>
-            <a href="/">홈</a>
+        	<a href="/">홈</a>
             <a href="goMyPage">마이페이지</a>
             <a href="goMain">일정관리</a>
             <a href="selectUser" class="protected">회원관리</a>
@@ -33,9 +33,11 @@
 	
 	            <input type="text" id="eventDescription" placeholder="메모">
 	
-	            <input type="text" id="trainerId" placeholder="트레이너ID">
-	
-	            <input type="text" id="userId" placeholder="회원ID">
+	            <input type="text" id="trainerId" value="${loginTrainer.id}" readonly>
+				
+	            <select id="userId" class="form-control">
+				    <option value="" disabled selected>회원 이름을 선택하세요</option>
+				</select>
 	
 	            <input type="color" id="eventColor" value="#ff0000">
 	

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.smhrd.entity.Trainer;
 import com.smhrd.repository.TrainerRepository;
 
@@ -34,13 +36,6 @@ public class TrainerController {
         }
     }
 
-	
-	
-    @PostMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate(); // 세션 무효화
-        return "redirect:/";  // 홈 화면으로 리다이렉트
-    }
 
 	
 	@PostMapping("/registTrainer")
@@ -51,12 +46,6 @@ public class TrainerController {
 		entity.setJoinedAt(LocalDateTime.now());
 		entity.setProfileImg("resources/image/default_profile.png");
 		
-//        if(!entity.getPw().equals(entity.getPwCheck())) {
-//            System.out.println("비밀번호 일치하지 않음");
-//            model.addAttribute("registerError", "Passwords do not match.");
-//            return "redirect:/registerTrainer"; // 회원가입 페이지로 리다이렉트
-//        }
-
 		
 		entity = repo.save(entity);
 		
@@ -81,18 +70,33 @@ public class TrainerController {
 	public String updateTrainer(Trainer entity, HttpSession session) {
 		
 		Trainer existingTrainer = (Trainer)session.getAttribute("loginTrainer");
+		System.err.println(entity);
 		
-		entity.setJoinedAt(existingTrainer.getJoinedAt());
-		entity.setType(existingTrainer.getType());
-		entity.setProfileImg(existingTrainer.getProfileImg());
-		entity.setToken(existingTrainer.getToken());
-
-		existingTrainer = entity;
+		existingTrainer.setBirthdate(entity.getBirthdate());
+		existingTrainer.setPw(entity.getPw());
+		existingTrainer.setProfileImg(entity.getProfileImg());
+		existingTrainer.setEmail(entity.getEmail());
+		existingTrainer.setPhone(entity.getPhone());
+		
+//		entity.setJoinedAt(existingTrainer.getJoinedAt());
+//		entity.setType(existingTrainer.getType());
+//		entity.setProfileImg(existingTrainer.getProfileImg());
+//		entity.setToken(existingTrainer.getToken());
 
 		if(existingTrainer != null) {
 			repo.save(existingTrainer);
 			session.setAttribute("loginTrainer", existingTrainer);
+			session.invalidate(); // 세션 무효화
 		}
+		
 		return "redirect:/";
 	}
+	
+	
+    @PostMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate(); // 세션 무효화
+        return "redirect:/";  // 홈 화면으로 리다이렉트
+    }
+
 }

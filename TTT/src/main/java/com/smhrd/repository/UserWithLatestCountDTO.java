@@ -9,5 +9,5 @@ public interface UserWithLatestCountDTO {
 	 String getUsr_Gender();
 	 LocalDate getUsr_Birthdate();
 	 Integer getCount();
-   
+	 String getProfile_Img();
 }
