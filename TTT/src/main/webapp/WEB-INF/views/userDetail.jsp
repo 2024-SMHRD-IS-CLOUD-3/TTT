@@ -34,7 +34,7 @@
 					<li>키: ${userDetail.height}</li>
 					<li>몸무게: ${userDetail.weight}</li>
 					<li>성별: ${userDetail.gender}</li>
-					<%-- <li>횟수: ${userDetail.count}</li> --%>
+					<li>횟수: ${userDetail.count}</li>
 			</ul>
 			<div class="buttons">
 				<button>출석</button>
@@ -48,7 +48,7 @@
 		<div class="stat-card">
 			<a href="goUserSchedule?userId=${userDetail.id}">
 				<div class="stat-image">
-					<img src="resources/image/calendar.png" alt="Image description">
+					<img src="resources/image/calendar.png" alt="">
 				</div>
 				<div class="stat-text">
 					<div class="stat-label">달력</div>

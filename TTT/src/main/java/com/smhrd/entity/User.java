@@ -3,16 +3,15 @@ package com.smhrd.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
-
 import org.springframework.format.annotation.DateTimeFormat;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor; 
@@ -58,6 +57,16 @@ public class User {
     @Column(name = "usr_gender", length = 1, nullable = true)
     private String gender;
 
+    @Column(name = "usr_count", nullable = false)
+    private Integer count;
+
+    @PrePersist
+    protected void onCreate() {
+        if (this.count == null) {
+            this.count = 10;
+        }
+    }
+
     // 가입일자 
     @Column(name = "joined_at", columnDefinition = "TIMESTAMP", insertable = false, updatable = false)
     private LocalDateTime joinedAt;
@@ -66,7 +75,7 @@ public class User {
     @Column(name = "profile_img", length = 1200, nullable = true)
     private String profileImg;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "tr_id", referencedColumnName = "tr_id", nullable = false)
     private Trainer trainer;
 }
