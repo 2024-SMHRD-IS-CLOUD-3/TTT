@@ -30,22 +30,24 @@ public class PoseController {
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping("/processAndSave")
+    @PostMapping("/processAndSave")
     public ResponseEntity<Map<String, Object>> processAndSavePose(
-    		@RequestParam("usr_Id") String usrId,
+    		@RequestParam("userId") String userId,
             @RequestParam("poseImg") MultipartFile image,
             @RequestParam("poseType") String poseType,
             @RequestParam("createdAt") String createdAt) {
     	System.out.println("Received file: " + image.getOriginalFilename());
         System.out.println("Received poseType: " + poseType);
         System.out.println("Received createdAt: " + createdAt);
+        System.out.println("Received poseType: " + userId);
     	System.out.println(image.isEmpty());
         try {
             // 1. Flask 서버에 이미지 전송 및 처리 결과 받기
             String processedImagePath = poseService.processImage(image, poseType);
-            User user = userRepository.findById(usrId)
-                    .orElseThrow(() -> new IllegalArgumentException("유효하지 않은 사용자 ID입니다. ID: " + usrId));
-
+            System.out.println("경로!!" + processedImagePath);
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new IllegalArgumentException("유효하지 않은 사용자 ID입니다. ID: " + userId));
+            System.out.println(processedImagePath);
             // 2. 결과 이미지 및 메타데이터를 DB에 저장
             Pose pose = new Pose();
             pose.setUser(user);  // 실제 사용자 ID를 설정 ->  userID를 세션으로 받아오기
