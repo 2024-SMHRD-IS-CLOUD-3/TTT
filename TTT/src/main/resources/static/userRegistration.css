@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('/resources/image/userRegistration.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    background-color: rgba(152, 196, 229, 0.9); /* 반투명한 헤더 */
+    padding: 10px 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+
+.header .logo {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 30px;
+}
+
+.header .logo img {
+    height: 60px;
+}
+
+.header nav {
+    display: flex;
+    justify-content: center;
+}
+
+.header nav a {
+    margin: 0 100px;
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.header nav a:hover, .header nav a:focus {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 200px; /* 헤더바 아래에 여백 추가 */
+}
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.8); /* 반투명한 배경 */
+    padding: 20px; /* 내부 여백을 줄임 */
+    border-radius: 10px;
+    width: 320px; /* 박스 크기를 줄임 */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); /* 더 진한 그림자 */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px; /* 제목 아래 여백 조정 */
+    color: #1d62e0;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form input[type="date"],
+form input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px; /* 필드 간 여백 줄임 */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+}
+
+.gender {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* 성별 필드 아래 여백 줄임 */
+}
+
+.gender input[type="radio"] {
+    margin-right: 5px;
+}
+
+.gender label {
+    margin-right: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1d62e0;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px; /* 버튼 위 여백 줄임 */
+}
+
+button:hover {
+    background-color: #0b47a1;
+}
+
+.footer {
+    background-color: rgba(144, 202, 249, 0.9); /* 반투명한 풋터 */
+    padding: 20px;
+    text-align: center;
+    color: #333;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

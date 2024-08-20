@@ -34,7 +34,7 @@ public class Trainer {
 	// 생년월일
 	@Column(name = "tr_birthdate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate  birthdate;
+	private LocalDate birthdate;
 
 	// 전화번호
 	@Column(name = "tr_phone", length = 20, nullable = false)
