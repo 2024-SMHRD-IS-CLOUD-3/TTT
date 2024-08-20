@@ -1,15 +1,19 @@
 package com.smhrd.controller;
 
 import com.smhrd.entity.Memo;
+import com.smhrd.entity.User;
 import com.smhrd.repository.MemoRepository;
+import com.smhrd.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.Map;
+import java.util.Optional;
 import java.util.HashMap;
-
+import java.security.Timestamp;
 import java.util.ArrayList;
 
 @Controller
@@ -17,16 +21,28 @@ public class MemoController {
 
    @Autowired
    private MemoRepository memoRepository;
+   
+   @Autowired
+   private UserRepository userRepository;
 
    @RequestMapping("/goMemo")
    public String goMemo(Model model, @RequestParam("userId") String userId) {
+	  System.out.println(userId);
+	  Optional<User> userOptional = userRepository.findById(userId);
+	  
+	  if (userOptional.isPresent()) {
+		  User user = userOptional.get();
+		  model.addAttribute("memoUser",user);
+	  }
+	  
       ArrayList<Memo> memoList = (ArrayList<Memo>) memoRepository.findAllByUserId(userId);
-      model.addAttribute("memoList", memoList);
       
-      if (!memoList.isEmpty()) {
-          System.out.println(memoList.get(0));
+      
+      
+      if (memoList.isEmpty()) {
+          model.addAttribute("memoList", new ArrayList<>());
        } else {
-          System.out.println("메모가 존재하지 않습니다.");
+    	  model.addAttribute("memoList", memoList);
        }
 
        return "userMemo";
@@ -35,13 +51,33 @@ public class MemoController {
 //
    
    @PostMapping("/createMemo")
-   public ResponseEntity<Map<String, Object>> createMemo(@RequestBody Memo memo) {
-       Memo savedMemo = memoRepository.save(memo);
-       Map<String, Object> response = new HashMap<>();
-       response.put("success", true);
-       response.put("memoIdx", savedMemo.getMemoIdx());
-       return ResponseEntity.ok().body(response);
+   public ResponseEntity<Map<String, Object>> createMemo(@RequestBody Map<String, Object> memoData) {
+       
+	   String userId = (String) memoData.get("userId");
+	   String memoContent = (String) memoData.get("memoContent");
+	   String createdAt = (String) memoData.get("createdAt");
+	   
+	   Optional<User> userOptional = userRepository.findById(userId);
+	   System.out.println("여기는 createMemo"+userId);
+	   
+	   if (userOptional.isPresent()) {
+	        Memo memo = new Memo();
+	        memo.setUser(userOptional.get());
+	        memo.setMemoContent(memoContent);
+
+	        Memo savedMemo = memoRepository.save(memo);
+	        Map<String, Object> response = new HashMap<>();
+	        response.put("success", true);
+	        response.put("memoIdx", savedMemo.getMemoIdx());
+	        return ResponseEntity.ok().body(response);
+	    } else {
+	        Map<String, Object> response = new HashMap<>();
+	        response.put("success", false);
+	        response.put("message", "유효하지 않은 사용자 ID입니다.");
+	        return ResponseEntity.status(400).body(response);
+	    }
    }
+	    
 
    
    @PutMapping("/updateMemo/{memoIdx}")
