@@ -13,7 +13,9 @@
 
 ## ⭐ 주요 기능
 * 기능1 회원가입 / 로그인
-
+* 기능2 회원추가 / 삭제
+* 기능3 일정관리 캘린더
+* 기능4 회원별 메모장 / 자세인식 / 개인 캘린더
 <br>
 
 ## ⛏ 기술스택
@@ -59,7 +61,6 @@
         <td>
             <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white"/>
             <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>
-            <img src=""/>
         </td>
     </tr>
 </table>
@@ -86,6 +87,9 @@
 <br>
 
 ### 로그인 / 회원가입
+![로그인](https://github.com/user-attachments/assets/32c9f1b5-1379-4379-9332-f0de9eb95e9e)![회원가입](https://github.com/user-attachments/assets/0dfef385-9ef5-48af-ac55-8ce4091616dc)
+
+
 <br>
 
 ### 홈페이지  
@@ -105,7 +109,7 @@
 <br>
 
 ### 회원 개인정보페이지
-
+![개인회원페이지](https://github.com/user-attachments/assets/2e636ec3-5c48-4a1e-8ece-4005fe169c94)
 <br>
 
 
