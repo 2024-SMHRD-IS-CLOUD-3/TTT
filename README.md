@@ -88,13 +88,19 @@
 ### 로그인 / 회원가입
 <br>
 
-### 홈 / 마이페이지  
+### 홈페이지  
 ![홈화면](https://github.com/user-attachments/assets/74b66658-bd05-40e0-a482-ba16790ec512)
+<br>
+
+### 마이페이지 
 ![마이페이지](https://github.com/user-attachments/assets/611d274c-e81f-4be1-8585-a9d83784e6da)
 <br>
 
-### 회원관리페이지 / 트레이너 일정관리 페이지
+### 회원관리페이지
 ![회원관리페이지](https://github.com/user-attachments/assets/2b3f9663-6d10-455a-807f-1eed03dcc92f)
+<br>
+
+### 트레이너 일정관리 페이지
 ![트레이너일정관리페이지](https://github.com/user-attachments/assets/14b39ca7-782c-4f7c-ad64-b79637f751ab)
 <br>
 
@@ -103,9 +109,15 @@
 <br>
 
 
-### 회원특이사항 메모장페이지/ 자세인식 페이지 / 회원 회원 일정관리 페이지
+### 회원특이사항 메모장페이지
 ![회원 특이사항 메모 페이지](https://github.com/user-attachments/assets/0e9d012a-1cf1-4400-936c-f43cdfc01613)
+<br>
+
+### 자세인식 페이지
 ![자세인식페이지](https://github.com/user-attachments/assets/76d79a21-4ae4-4dee-adfe-a2fdf3202326)
+<br>
+
+### 회원 일정관리 페이지
 ![개인회원 캘린더페이지](https://github.com/user-attachments/assets/0e8d832a-2f60-46d3-8e6f-b966e1c86e0a)
 <br>
 
