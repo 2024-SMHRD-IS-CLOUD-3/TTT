@@ -7,17 +7,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>갤러리 페이지</title>
-<link rel="stylesheet"
-	href="/resources/userGallery.css">
+<link rel="stylesheet" href="/resources/userGallery.css">
 </head>
 <body>
 	<div class="header">
-		<img src="/resources/image/logo.png"
-			alt="Logo" class="logo">
+		<img src="/resources/image/logo.png" alt="Logo" class="logo">
 		<nav>
-			<a href="/">홈</a>
-			<a href="goMyPage">마이페이지</a>
-			<a href="goMain">일정관리</a>
+			<a href="/">홈</a> <a href="goMyPage">마이페이지</a> <a href="goMain">일정관리</a>
 			<a href="selectUser">회원관리</a>
 		</nav>
 	</div>
@@ -63,7 +59,8 @@
 				<div class="gallery-title">갤러리</div>
 				<div class="content-buttons">
 					<button id="compareBtn">비교하기</button>
-					<button id="addPhotoBtn">사진 추가</button> <!-- section2에서 실행 -->
+					<button id="addPhotoBtn">사진 추가</button>
+					<!-- section2에서 실행 -->
 				</div>
 			</div>
 		</div>
@@ -71,18 +68,21 @@
 		<div class="section" id="section2">
 			<!-- 데이터베이스에서 가져온 Pose 데이터를 반복하여 출력합니다. -->
 			<c:forEach var="pose" items="${poses}">
-                <div class="card" data-pose-id="${pose.poseIdx}">
-                    <img src="${pageContext.request.contextPath}/resources/${pose.poseImg}" alt="Pose Image" />
-                    <p>등록 일자: ${pose.createdAt}</p>
-                    <p>타입: ${pose.poseType}</p>
-                    <button class="delete-btn">삭제</button>
-                </div>
-            </c:forEach>
+				<div class="card" data-pose-id="${pose.poseIdx}">
+					<img
+						src="${pageContext.request.contextPath}/resources/${pose.poseImg}"
+						alt="Pose Image" />
+					<p>등록 일자: ${pose.createdAt}</p>
+					<p>타입: ${pose.poseType}</p>
+					<button class="delete-btn">삭제</button>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
 
-	<script src="/resources/js/userGallery.js"></script>
-	 <script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/userGallery.js"></script>
+	<script>
         document.querySelectorAll('.card').forEach(card => {
             const poseIdx = card.getAttribute('data-pose-id');
             addCardEventListeners(card, poseIdx);

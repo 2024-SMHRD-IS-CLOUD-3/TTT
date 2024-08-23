@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -23,10 +24,11 @@
         <div class="sidebar">
             <div class="profile">
                 <div class="profile-image">
-                    <img src="${getProfile_img}" alt="프로필 사진">
+                    <img src="/resources/image/default_profile.png" alt="">
                 </div>
                 <div class="profile-name">
-                    <p>${getName}</p>
+                	<p>${memoUser.name}</p>
+					<input type="hidden" id="userIdField" value="${memoUser.id}">
                 </div>
             </div>
         </div>
@@ -42,14 +44,32 @@
             </div>
             <div id="noteContainer" class="note-container">
                 <!-- 메모지가 추가될 영역 -->
+                <c:forEach var="memo" items="${memoList}">
+					<div class="note" data-memo-id="${memo.memoIdx}">
+						<div class="note-header">
+							<div class="note-buttons">
+								<button class="edit-btn">수정</button>
+								<button class="delete-btn">삭제</button>
+							</div>
+						</div>
+						<div class="note-content">${memo.memoContent}</div>
+						<div class="note-footer">작성 날짜: ${memo.createdAt}</div>
+					</div>
+				</c:forEach>
             </div>
         </div>
     </div>
 
+    <script src="resources/js/userMemo.js"></script>
+    <script>
+    document.querySelectorAll('.note').forEach(note => {
+        const memoIdx = note.getAttribute('data-memo-id');
+        addNoteEventListeners(note, memoIdx);
+    });
+    </script>
     <footer class="footer">
         <p>  Copyright © 2024-2024 Smart Human Resources Developmont 저작권법의 보호를 안 받으니까 알아하쇼.</p>
     </footer>
 
-    <script src="resources/js/userMemo.js"></script>
 </body>
 </html>

@@ -34,7 +34,9 @@ public class PoseService {
             // 파일을 MultiValueMap으로 변환
             MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
             body.add("image", convert(file));
+            System.out.println();
             body.add("pose_type", poseType);
+            System.err.println("여기는 서비스"+poseType);
 
             // 요청 헤더 설정
             HttpHeaders headers = new HttpHeaders();
