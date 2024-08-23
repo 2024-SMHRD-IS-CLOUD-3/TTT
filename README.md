@@ -74,7 +74,7 @@
 
 
 ## 📌 서비스 흐름도
-![서비스 흐름도](https://github.com/user-attachments/assets/3a268a35-6d1a-42f7-84c8-8f848e5a0239)
+![TTT-플로우차트-removebg-preview](https://github.com/user-attachments/assets/42d274ce-8422-4480-8732-c98c01e2470a)
 <br>
 
 
@@ -84,7 +84,7 @@
 <br>
 
 ## 🖥 화면 구성
-![TTT-플로우차트-removebg-preview](https://github.com/user-attachments/assets/42d274ce-8422-4480-8732-c98c01e2470a)
+
 
 <br>
 
