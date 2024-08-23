@@ -84,6 +84,8 @@
 <br>
 
 ## 🖥 화면 구성
+![TTT-플로우차트-removebg-preview](https://github.com/user-attachments/assets/42d274ce-8422-4480-8732-c98c01e2470a)
+
 <br>
 
 ### 로그인 / 회원가입
@@ -114,7 +116,8 @@
 
 
 ### 회원특이사항 메모장페이지
-![회원 특이사항 메모 페이지](https://github.com/user-attachments/assets/0e9d012a-1cf1-4400-936c-f43cdfc01613)
+![KakaoTalk_20240823_090157507](https://github.com/user-attachments/assets/48ef2b93-15af-48b7-a542-10bd814074fb)
+
 <br>
 
 ### 자세인식 페이지
