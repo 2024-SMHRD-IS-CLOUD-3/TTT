@@ -25,7 +25,7 @@
                 <img src= "/resources/image/default_profile.png" alt="">
             </div>
             <div class="profile-name">${loginTrainer.name}</div>
-            <button class="change-photo">프로필 사진 변경</button>
+            <button class="change-photo"><input type="file" style="display:none;">프로필 사진 변경</button>
         </div>
         <div class="profile-info">
             <label for="id">아이디</label>
@@ -34,7 +34,7 @@
             <label for="password">비밀번호</label>
             <input name="pw" type="password" id="password">
             
-            <lable for="password2">비밀번호 확인</lable>
+            <label for="password2">비밀번호 확인</lable>
             <input name="pw2" type="password" id="password2">
         
             <label for="birthdate">생년월일</label>
